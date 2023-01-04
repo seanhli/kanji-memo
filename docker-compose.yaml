@@ -6,9 +6,9 @@ services:
     volumes:
       - ./fe:/app
     ports:
-      - "2999:3000"
+      - "3000:3000"
     environment:
       HOST_OS: ${OS}
       NODE_ENV: development
       HOST: "0.0.0.0"
-      PUBLIC_URL: http://localhost:2999
+      PUBLIC_URL: http://localhost:3000

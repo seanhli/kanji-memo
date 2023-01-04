@@ -1,0 +1,58 @@
+.landing-banner {
+    position: relative;
+    line-height: 0;
+    left: 50%;
+    margin-left: min(-12.5vh, -50px);
+    top: 10vh;
+    width: max(25vh, 100px);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.landing-banner img {
+    height: max(5vh,20px);
+    width: max(5vh,20px);
+}
+
+.landing-subtitle {
+    position: relative;
+    top: 13vh;
+    font-weight: 500;
+    font-size: max(3vh, 18px);
+    text-align: center;
+}
+
+.sub-subtitle {
+    float: bottom;
+    margin-top: 0.5vh;
+    font-size: max(2vh, 12px)
+}
+
+.power-button {
+    position: relative;
+    left: 50%;
+    margin-left: -3.5vh;
+    top: 16vh;
+    width: 7vh;
+    filter: invert(1);
+}
+
+.power-button img {
+    height: auto;
+    width: 100%;
+}
+
+.power-button:hover {
+    filter: invert(1) drop-shadow(0px 0px 4px rgb(204, 204, 204));
+    animation: pulse 5s infinite ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1) }
+    50% { transform: scale(1.15) }
+    100% { transform: scale(1) }
+}

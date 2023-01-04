@@ -1,0 +1,30 @@
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #c4c3ca;
+  background-color: rgb(30, 30, 30);
+}
+
+main {
+  position: absolute;
+  top: 7.5vh;
+  left: 9vh;
+  right: 9vh;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}

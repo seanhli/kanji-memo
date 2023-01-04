@@ -1,0 +1,103 @@
+.back-box {
+    position: fixed;
+    z-index: -99;
+}
+
+.back-box:nth-child(2) {
+    top: 2vh;
+    height: 15vh;
+    width: 8vh;
+    background-color: rgba(208, 208, 208, 0.25);
+    animation: drift3 18s infinite ease, fadepulse 5s infinite ease;
+}
+
+.back-box:nth-child(3) {
+    top: 14vh;
+    height: 15vh;
+    width: 25vh;
+    background-color: rgba(240, 240, 240, 0.1);
+    animation: drift 28s infinite ease, fadepulse 3s infinite ease;
+}
+
+.back-box:nth-child(4) {
+    top: 25vh;
+    height: 20vh;
+    width: 12vh;
+    background-color: rgba(138, 138, 138, 0.15);
+    animation: drift2 15s infinite ease, fadepulse 6s infinite ease;
+}
+
+.back-box:nth-child(5) {
+    top: 35vh;
+    height: 7vh;
+    width: 15vh;
+    background-color: rgba(208, 208, 208, 0.25);
+    animation: drift3 23s infinite ease, fadepulse 7s infinite ease;
+}
+
+.back-box:nth-child(6) {
+    top: 40vh;
+    height: 30vh;
+    width: 20vh;
+    background-color: rgba(238, 238, 238, 0.15);
+    animation: drift2 17s infinite ease, fadepulse 3s infinite ease;
+}
+
+.back-box:nth-child(7) {
+    top: 50vh;
+    height: 10vh;
+    width: 10vh;
+    background-color: rgba(150, 150, 150, 0.1);
+    animation: drift 32s infinite ease, fadepulse 4.5s infinite ease;
+}
+
+.back-box:nth-child(8) {
+    top: 65vh;
+    height: 15vh;
+    width: 30vh;
+    background-color: rgba(208, 208, 208, 0.05);
+    animation: drift3 22s infinite ease, fadepulse 8s infinite ease;
+}
+
+.back-box:nth-child(9) {
+    top: 75vh;
+    height: 15vh;
+    width: 15vh;
+    background-color: rgba(180, 180, 180, 0.25);
+    animation: drift 35s infinite ease, fadepulse 12s infinite ease;
+}
+
+.back-box:nth-child(10) {
+    top: 85vh;
+    height: 10vh;
+    width: 23vh;
+    background-color: rgba(208, 208, 208, 0.15);
+    animation: drift2 19s infinite ease, fadepulse 5s infinite ease;
+}
+
+.back-box:nth-child(11) {
+    top: 92vh;
+    height: 9vh;
+    width: 4vh;
+    background-color: rgba(208, 208, 208, 0.4);
+    animation: drift3 15s infinite ease, fadepulse 8s infinite ease;
+}
+
+@keyframes drift {
+    0% {transform: translateX(-20vw);}
+    100% {transform: translateX(200vw);}
+}
+
+@keyframes drift2 {
+    0% {transform: translateX(-70vw);}
+    100% {transform: translateX(150vw);}
+}
+
+@keyframes drift3 {
+    0% {transform: translateX(-120vw);}
+    100% {transform: translateX(130vw);}
+}
+
+@keyframes fadepulse {
+    50% {opacity: 0}
+}
