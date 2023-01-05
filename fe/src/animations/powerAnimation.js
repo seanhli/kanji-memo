@@ -81,12 +81,12 @@ export default function powerAnimation() {
     totalGrid.forEach(tile => {
         powerTL
         .to('.landing-banner .row img', {
-            duration: 1,
+            duration: 0.75,
             filter: 'brightness(1)',
             ease: 'power2.in'
         }, 'phase-0')
         .to('.landing-banner .row img', {
-            duration: 2,
+            duration: 1.5,
             filter: 'drop-shadow(0px 0px 1.5vh rgb(255, 255, 255))',
             ease: 'power2.out'
         }, 'phase-0.1')
