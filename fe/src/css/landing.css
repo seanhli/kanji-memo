@@ -1,3 +1,22 @@
+.landing-page {
+    position: absolute;
+    left: 0;
+    height: 92.5vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.landing-page::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.landing-page {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 .landing-banner {
     position: relative;
     line-height: 0;
@@ -11,26 +30,24 @@
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
-    /* background-color: rgb(30, 30, 30); */
 }
 
 .landing-banner img {
     height: max(5vh,20px);
     width: max(5vh,20px);
+    filter: brightness(0.7);
 }
-/*
-.landing-banner .row:nth-child(1) img:nth-child(1) {
-    filter: invert(0.4);
-    opacity: 0;
-} */
 
-/* .landing-banner:hover {
-    filter: drop-shadow(0px 0px 8px rgb(255, 255, 255));
-} */
-
-.landing-subtitle {
+.lower-section {
     position: relative;
     top: 13vh;
+    left: 50%;
+    margin-left: -300px;
+    height: 3px;
+    width: 600px;
+}
+
+.landing-subtitle {
     font-weight: 500;
     font-size: max(3vh, 18px);
     text-align: center;
@@ -45,10 +62,17 @@
 .power-button {
     position: relative;
     left: 50%;
-    margin-left: -3.5vh;
-    top: 16vh;
-    width: 7vh;
-    filter: invert(1);
+    margin-left: min(-3.5vh, -15px);
+    margin-top: 2vh;
+    width: max(7vh, 30px);
+    height: max(7vh, 30px);
+    filter: invert(1) brightness(0.7);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 
 .power-button img {
@@ -65,4 +89,32 @@
     0% { transform: scale(1) }
     50% { transform: scale(1.15) }
     100% { transform: scale(1) }
+}
+
+.power-line-container {
+    position: fixed;
+    top: max(32.5vh, 100px);
+    margin-top: 10vh;
+    left: 50%;
+    margin-left: max(12.5vh, 50px);
+    height: 30vh;
+    width: 50%;
+}
+
+.power-line-h {
+    position: relative;
+    width: 100%;
+    height: 3vh;
+    overflow: hidden;
+}
+
+.spark {
+    position: relative;
+    left: 100%;
+    top: 1.25vh;
+    width: max(42vw, 480px);
+    height: 0.5vh;
+    border-radius: 1vh;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.3) 85%, rgba(255, 255, 255, 1) 100%);
+    filter: drop-shadow(0px 0px 1.25vh rgb(204, 204, 204));
 }

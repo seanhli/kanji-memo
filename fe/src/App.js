@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<LandingPage/>}/>
+            <Route path="home"/>
           </Route>
         </Routes>
       </main>

@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom"
 import powerAnimation from "./animations/powerAnimation"
 
 function LandingPage() {
-
+    const navigate = useNavigate()
     const bannerHeight = [...Array(10).keys()]
     const bannerWidth = [...Array(5).keys()]
 
@@ -25,12 +26,12 @@ function LandingPage() {
     }
 
     function cleanUp(tl) {
-        tl.time(0).kill()
-        //navigate
+        // tl.time(0).kill()
+        navigate("/home")
     }
 
     return (
-        <>
+        <div className="landing-page">
             <div className="landing-banner">
                 {bannerHeight.map(row => {
                 return (
@@ -47,20 +48,27 @@ function LandingPage() {
                 )
                 })}
             </div>
-            <div className="landing-subtitle">
-                {subtitles[roll]}
-                {subSubtitles[roll] &&
-                <>
-                    <div className="sub-subtitle">
-                        {subSubtitles[roll]}
-                    </div>
-                </>}
+            <div className="lower-section">
+                <div className="landing-subtitle">
+                    {subtitles[roll]}
+                    {subSubtitles[roll] &&
+                    <>
+                        <div className="sub-subtitle">
+                            {subSubtitles[roll]}
+                        </div>
+                    </>}
+                </div>
+                <div className="power-button"
+                    onClick={e=>powerClick(e)}>
+                    <img src={require(`./assets/power-button.png`)} alt="start button"/>
+                </div>
             </div>
-            <div className="power-button"
-                onClick={e=>powerClick(e)}>
-                <img src={require(`./assets/power-button.png`)} alt="start button"/>
+            <div className="power-line-container">
+                <div className="power-line-h">
+                    <div className="spark"></div>
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 
