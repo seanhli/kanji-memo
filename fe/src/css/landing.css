@@ -11,12 +11,22 @@
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
+    /* background-color: rgb(30, 30, 30); */
 }
 
 .landing-banner img {
     height: max(5vh,20px);
     width: max(5vh,20px);
 }
+/*
+.landing-banner .row:nth-child(1) img:nth-child(1) {
+    filter: invert(0.4);
+    opacity: 0;
+} */
+
+/* .landing-banner:hover {
+    filter: drop-shadow(0px 0px 8px rgb(255, 255, 255));
+} */
 
 .landing-subtitle {
     position: relative;

@@ -1,3 +1,5 @@
+import powerAnimation from "./animations/powerAnimation"
+
 function LandingPage() {
 
     const bannerHeight = [...Array(10).keys()]
@@ -10,10 +12,22 @@ function LandingPage() {
     ]
     const subSubtitles = [
         null,
-        "yeah right",
+        '— psychopath in the making',
         null,
     ]
     const roll = Math.floor(Math.random()*subtitles.length)
+
+    function powerClick(event) {
+        event.preventDefault()
+        const powerTL = powerAnimation()
+        powerTL.play()
+        setTimeout(() => {cleanUp(powerTL)},powerTL.duration()*1000+500)
+    }
+
+    function cleanUp(tl) {
+        tl.time(0).kill()
+        //navigate
+    }
 
     return (
         <>
@@ -25,6 +39,7 @@ function LandingPage() {
                         return (
                         <img src={require(`./assets/kanji-banner/${row+1}-${col+1}.png`)}
                             alt="kanji-banner"
+                            className="banner-tile"
                             key={String(row)+String(col)}/>
                         )
                     })}
@@ -41,7 +56,8 @@ function LandingPage() {
                     </div>
                 </>}
             </div>
-            <div className="power-button">
+            <div className="power-button"
+                onClick={e=>powerClick(e)}>
                 <img src={require(`./assets/power-button.png`)} alt="start button"/>
             </div>
         </>

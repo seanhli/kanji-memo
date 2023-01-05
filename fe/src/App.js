@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import BackgroundAnimation from './backgroundAnimation';
+import BackgroundAnimation from './animations/backgroundAnimation';
 import LandingPage from "./landing";
 
 function App() {
