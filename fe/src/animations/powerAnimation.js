@@ -74,7 +74,7 @@ export default function powerAnimation() {
     .to('.spark', {
         delay: 0.3,
         duration: 1,
-        left: '-100%',
+        left: '-150%',
         ease: 'power2.out'
     }, 'start-0.1')
 

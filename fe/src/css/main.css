@@ -1,3 +1,7 @@
+:root {
+  --bg-dark: rgb(23, 26, 19);
+}
+
 body,
 html {
   height: 100%;
@@ -12,14 +16,15 @@ body {
   font-weight: 300;
   line-height: 1.7;
   color: #c4c3ca;
-  background-color: rgb(23, 26, 19);
+  background-color: var(--bg-dark);
 }
 
 main {
   position: absolute;
   top: 7.5vh;
-  left: 9vh;
-  right: 9vh;
+  left: max(4vw,9vh);
+  right: max(4vw,9vh);
+  height: 85vh;
 }
 
 img {
@@ -27,4 +32,93 @@ img {
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+}
+
+.side-menu {
+  display: inline-block;
+}
+
+.menu {
+  display: block;
+  margin-bottom: max(1.5vh, 8px);
+  color: white;
+  width: max(13vw, 140px);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  filter: brightness(0.9)
+}
+
+.menu-title {
+  font-weight: 600;
+  font-size: max(4vh, 24px);
+  margin-bottom: max(1vh, 3px);
+}
+
+.menu-item {
+  font-weight: 500;
+  font-size: max(2.5vh, 14px);
+  margin-left: max(2vw, 15px);
+  margin-bottom: max(1.5vh, 5px);
+  width: max(10vw, 130px);
+  padding: 0.5vh 1.5vh;
+  border: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-link {
+  display: block;
+  font-weight: 500;
+  font-size: max(2.5vh, 14px);
+  margin-left: max(2vw, 15px);
+  margin-bottom: max(1.5vh, 5px);
+  width: max(10vw, 130px);
+  padding: 0.5vh 1.5vh;
+  border: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.nav-link-active {
+  display: block;
+  font-size: max(2.5vh, 14px);
+  margin-left: max(2vw, 15px);
+  margin-bottom: max(1.5vh, 5px);
+  width: max(10vw, 130px);
+  padding: 0.5vh 1.5vh;
+  border: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--bg-dark);
+  text-decoration: inherit;
+  background-color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
+.menu-item:hover {
+  color: var(--bg-dark);
+  background-color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: var(--bg-dark);
+  background-color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
+.main-display {
+  display: inline-block;
+  position: absolute;
+  top: 1.5vh;
+  width: max(72.5vw, 600px);
+  height: 82.5vh;
+  margin-left: max(3vw, 65px);
+  background-color: rgba(100, 100, 100, 0.3);
 }
