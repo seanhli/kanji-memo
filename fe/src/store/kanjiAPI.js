@@ -1,13 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const kanjiAPI = createApi({
-    reducerPath: 'kanji',
+    reducerPath: 'kanjiAPI',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://kanjiapi.dev/v1/'
     }),
     endpoints: builder => ({
         //methods for api interaction
-        //get all joyo kanji
+        //get grade N (1-6) kanji
+        getGradeNKaji: builder.query({
+            query: (level) => 'kanji/grade-' + level
+        }),
+        //get all joyo (all - will use as advanced for now) kanji
         getJoyoKanji: builder.query({
             query: () => 'kanji/joyo'
         }),
@@ -19,4 +23,4 @@ export const kanjiAPI = createApi({
 })
 
 //export hooks for functionality set with endpoints
-export const { useGetJoyoKanjiQuery, useGetKanjiDetailQuery } = kanjiAPI
+export const { useGetGradeNKajiQuery, useGetJoyoKanjiQuery, useGetKanjiDetailQuery } = kanjiAPI

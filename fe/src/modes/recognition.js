@@ -1,12 +1,13 @@
-import { useGetJoyoKanjiQuery } from "../store/kanjiAPI"
+import { useSelector } from "react-redux"
 
 function Recognition() {
-    const { data } = useGetJoyoKanjiQuery()
-    console.log("data::: ", data)
+    let kanjiLists = useSelector(state => state.kanjiSlice.kanjiLists)
 
     return (
         <>
-            HIHIHI
+            <div onClick={()=>{console.log(kanjiLists)}}>
+                kekeke
+            </div>
         </>
     )
 }
