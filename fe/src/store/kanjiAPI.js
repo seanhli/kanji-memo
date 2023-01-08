@@ -8,7 +8,7 @@ export const kanjiAPI = createApi({
     endpoints: builder => ({
         //methods for api interaction
         //get grade N (1-6) kanji
-        getGradeNKaji: builder.query({
+        getGradeNKanji: builder.query({
             query: (level) => 'kanji/grade-' + level
         }),
         //get all joyo (all - will use as advanced for now) kanji
@@ -23,4 +23,4 @@ export const kanjiAPI = createApi({
 })
 
 //export hooks for functionality set with endpoints
-export const { useGetGradeNKajiQuery, useGetJoyoKanjiQuery, useGetKanjiDetailQuery } = kanjiAPI
+export const { useGetGradeNKanjiQuery, useGetJoyoKanjiQuery, useGetKanjiDetailQuery } = kanjiAPI

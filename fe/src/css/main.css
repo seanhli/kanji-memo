@@ -53,9 +53,36 @@ img {
 }
 
 .menu-title {
+  display: inline-block;
   font-weight: 600;
   font-size: max(4vh, 24px);
   margin-bottom: max(1vh, 3px);
+  width: fit-content;
+}
+
+.menu-title:hover {
+  filter: drop-shadow(0px 0px 1.25vh rgb(204, 204, 204));
+}
+
+.menu-title:hover ~ .menu-widget {
+  filter: invert(1) drop-shadow(0px 0px 1.25vh rgb(204, 204, 204));
+  opacity: 1;
+}
+
+.menu-widget {
+  display: inline-block;
+  opacity: 0;
+  margin-left: max(0.5vw, 10px);
+  height: max(2.5vh, 20px);
+  width: max(2.5vh, 20px);
+  filter: invert(1);
+}
+
+.menu-widget img {
+  position: relative;
+  bottom: min(-0.15vh, -2px);
+  height: auto;
+  width: 100%;
 }
 
 .menu-item {
@@ -68,6 +95,18 @@ img {
   border: 2px solid white;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.menu .menu-item:nth-child(3) {
+  animation: fadeIn 0.75s ease-out 0s both;
+}
+
+.menu .menu-item:nth-child(4) {
+  animation: fadeIn 0.75s ease-out 0.15s both;
+}
+
+.menu .menu-item:nth-child(5) {
+  animation: fadeIn 0.75s ease-out 0.3s both;
 }
 
 .nav-link {
@@ -83,20 +122,28 @@ img {
   overflow: hidden;
   color: inherit;
   text-decoration: inherit;
+  animation: fadeIn 1s ease;
 }
 
-.nav-link-active {
-  display: block;
-  font-size: max(2.5vh, 14px);
-  margin-left: max(2vw, 15px);
-  margin-bottom: max(1.5vh, 5px);
-  width: max(10vw, 130px);
-  padding: 0.5vh 1.5vh;
-  border: 2px solid white;
-  white-space: nowrap;
-  overflow: hidden;
+.menu .nav-link:nth-child(3) {
+  animation: fadeIn 0.75s ease-out 0s both;
+}
+
+.menu .nav-link:nth-child(4) {
+  animation: fadeIn 0.75s ease-out 0.15s both;
+}
+
+.menu .nav-link:nth-child(5) {
+  animation: fadeIn 0.75s ease-out 0.3s both;
+}
+
+.menu .nav-link:nth-child(6) {
+  animation: fadeIn 0.75s ease-out 0.45s both;
+}
+
+
+.active {
   color: var(--bg-dark);
-  text-decoration: inherit;
   background-color: rgb(255, 255, 255);
   font-weight: 600;
 }
@@ -113,6 +160,12 @@ img {
   font-weight: 600;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+}
+
 .main-display {
   display: inline-block;
   position: absolute;
@@ -120,5 +173,5 @@ img {
   width: max(72.5vw, 600px);
   height: 82.5vh;
   margin-left: max(3vw, 65px);
-  background-color: rgba(100, 100, 100, 0.3);
+  background-color: rgba(100, 100, 100, 0.2);
 }

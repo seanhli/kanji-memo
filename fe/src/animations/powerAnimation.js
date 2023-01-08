@@ -72,8 +72,8 @@ export default function powerAnimation() {
     }, 'start-0')
     //spark trail from right appears
     .to('.spark', {
-        delay: 0.3,
-        duration: 1,
+        delay: 0.25,
+        duration: 0.75,
         left: '-150%',
         ease: 'power2.out'
     }, 'start-0.1')
@@ -86,7 +86,7 @@ export default function powerAnimation() {
             ease: 'power2.in'
         }, 'phase-0')
         .to('.landing-banner .row img', {
-            duration: 1.5,
+            duration: 1,
             filter: 'drop-shadow(0px 0px 1.5vh rgb(255, 255, 255))',
             ease: 'power2.out'
         }, 'phase-0.1')

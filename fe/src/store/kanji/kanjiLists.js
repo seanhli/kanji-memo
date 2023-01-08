@@ -14,7 +14,7 @@ const initialState = {
   }
 };
 
-// Create the slice of data for mananging lists of kanji to use for varying difficulty levels
+// Create the slice of data for managing lists of kanji to use for varying difficulty levels
 export const kanjiSlice = createSlice({
   name: 'kanjiSlice',
   initialState, // Set the initial state declared above
