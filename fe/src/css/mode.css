@@ -1,0 +1,52 @@
+:root {
+    --bg-dark: rgb(23, 26, 19);
+}
+
+.kanji-recognition {
+    display: grid;
+    margin-left: min(-3.5vw,-50px);
+    grid-template-columns: repeat(6, auto);
+    column-gap: max(2vh,20px);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.kanji-recognition .kanji-word {
+    display: inline-block;
+    font-size: max(7.5vh, 48px);
+    font-weight: 600;
+    padding: 1vh 1vh;
+    border: 2px solid white;
+    text-align: center;
+    color: var(--bg-dark);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.kanji-recognition .answer-box {
+    display: inline-block;
+    min-height: max(6vh, 30px);
+    margin-top: max(1.75vh,12.5px);
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.labels {
+    position: relative;
+    color: white;
+    font-weight: 600;
+    text-align: right;
+    top: 50%;
+    font-size: max(2.5vh, 16px);
+    margin-top: min(-1.25vh, 8px);
+    margin-left: -50px;
+}
+
+.recognition-instructions {
+    margin-top: max(2vh, 15px);
+    color: rgb(222, 222, 222);
+    text-align: center;
+}

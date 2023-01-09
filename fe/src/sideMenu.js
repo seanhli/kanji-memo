@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useDispatch } from 'react-redux';
-import { toggleMenu } from "./store/menu/menuUI";
+import { toggleMenu, changeLevel } from "./store/menu/menuUI";
 
 function SideMenu() {
     const menuState = useSelector(state => state.menuSlice)
@@ -57,13 +57,16 @@ function SideMenu() {
                 </div>
                 {menuState.difficulty &&
                 <>
-                    <div className="menu-item">
+                    <div className={menuState.level === 1 ? "menu-item active" : "menu-item"}
+                        onClick={e=>{dispatch(changeLevel(1))}}>
                         beginner
                     </div>
-                    <div className="menu-item">
+                    <div className={menuState.level === 2 ? "menu-item active" : "menu-item"}
+                        onClick={e=>{dispatch(changeLevel(2))}}>
                         intermediate
                     </div>
-                    <div className="menu-item">
+                    <div className={menuState.level === 3 ? "menu-item active" : "menu-item"}
+                        onClick={e=>{dispatch(changeLevel(3))}}>
                         advanced
                     </div>
                 </>}

@@ -170,8 +170,8 @@ img {
   display: inline-block;
   position: absolute;
   top: 1.5vh;
-  width: max(72.5vw, 600px);
+  width: max(72.5vw, 750px);
   height: 82.5vh;
   margin-left: max(3vw, 65px);
-  background-color: rgba(100, 100, 100, 0.2);
+  /* background-color: rgba(100, 100, 100, 0.2); */
 }

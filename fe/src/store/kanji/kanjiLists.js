@@ -25,11 +25,11 @@ export const kanjiSlice = createSlice({
       state.kanjiLists["intermediate"] = action.payload[1]
       state.kanjiLists["advanced"] = action.payload[2]
     },
-    // add method to remove all first item from queue (and if queue is empty, recreate a new shuffled queue)
+    // add method to remove all first item from queue (and if queue has less than 10 words, recreate a new shuffled queue)
     nextKanji: (state, action) => {
       // action payload should come in as list name
       if (action && action.payload in state.Qs)
-          if (state.Qs[action.payload].length > 0) {
+          if (state.Qs[action.payload].length > 10) {
               state.Qs[action.payload].shift()
           } else {
               state.Qs[action.payload] = [...state.kanjiLists[action.payload]].sort((a, b) => 0.5 - Math.random())
