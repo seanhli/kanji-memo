@@ -31,7 +31,7 @@
     min-height: max(6vh, 30px);
     margin-top: max(1.75vh,12.5px);
     border: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .labels {
@@ -42,7 +42,7 @@
     top: 50%;
     font-size: max(2.5vh, 16px);
     margin-top: min(-1.25vh, 8px);
-    margin-left: -50px;
+    margin-left: max(-50px, -1vw);
 }
 
 .recognition-instructions {

@@ -1,18 +1,34 @@
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { nextKanji } from "../store/kanji/kanjiLists"
+import { useGetKanjiDetailQuery } from "../store/kanjiAPI"
 
 function Recognition() {
-    const difficulty = useSelector(state => state.menuSlice.level)
-    const kanjiLists = useSelector(state => state.kanjiSlice.kanjiLists)
+    const dispatch = useDispatch()
+    const level = useSelector(state => state.menuSlice.level)
+    const difficulty = level === 1 ? 'beginner' : level === 2 ? 'intermediate' : 'advanced'
+    const kanjiRow = useSelector(state => state.kanjiSlice.next5[difficulty])
 
-    const kanjiRow =
-        difficulty === 1 ?
-            kanjiLists.beginner.slice(1,6) :
-        difficulty === 2 ?
-            kanjiLists.intermediate.slice(1,6) :
-        kanjiLists.advanced.slice(1,6)
+    useEffect(()=>{
+        //on component clean up, refresh list of kanji (e.g. when switching to new page)
+        return () => {
+            dispatch(nextKanji(difficulty))
+        }
+    },[])
 
-    const kunAnswers = [...Array(5).keys()]
-    const onAnswers = [...Array(5).keys()]
+    // const answerKey = [
+    //     useGetKanjiDetailQuery(kanjiRow[0]).data,
+    //     useGetKanjiDetailQuery(kanjiRow[1]).data,
+    //     useGetKanjiDetailQuery(kanjiRow[2]).data,
+    //     useGetKanjiDetailQuery(kanjiRow[3]).data,
+    //     useGetKanjiDetailQuery(kanjiRow[4]).data
+    // ]
+    // console.log(answerKey)
+
+    console.log(kanjiRow)
+
+    const kunAnswerBoxes = [...Array(5).keys()]
+    const onAnswerBoxes = [...Array(5).keys()]
 
     return (
         <>
@@ -27,7 +43,7 @@ function Recognition() {
                     )
                 })}
                 <div className="labels">kun</div>
-                {kunAnswers.map(box => {
+                {kunAnswerBoxes.map(box => {
                     return (
                         <div className="answer-box"
                             key={`box-${box}`}>
@@ -35,7 +51,7 @@ function Recognition() {
                     )
                 })}
                 <div className="labels">on</div>
-                {onAnswers.map(box => {
+                {onAnswerBoxes.map(box => {
                     return (
                         <div className="answer-box"
                             key={`box-${box}`}>

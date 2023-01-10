@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BackgroundAnimation from './animations/backgroundAnimation';
 import SideMenu from './sideMenu';
@@ -14,6 +14,7 @@ import { createKanjiLists } from './store/kanji/kanjiLists';
 
 function App() {
   const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false)
   const levels = [useGetGradeNKanjiQuery(1).data,
     useGetGradeNKanjiQuery(2).data,
     useGetGradeNKanjiQuery(3).data,
@@ -23,20 +24,18 @@ function App() {
     useGetJoyoKanjiQuery().data
   ]
 
+  //create master kanji lists
   const beg_data = levels[0] && levels[1] && levels[2] ? [...levels[0]].concat([...levels[1]]).concat([...levels[2]]) : ['loading']
   const int_data = levels[3] && levels[4] && levels[5] ? [...levels[3]].concat([...levels[4]]).concat([...levels[5]]) : ['loading']
   const adv_data = levels[6] ? [...levels[6]] : ['loading']
 
-  //shuffle all lists
-  beg_data.sort((a, b) => 0.5 - Math.random())
-  int_data.sort((a, b) => 0.5 - Math.random())
-  adv_data.sort((a, b) => 0.5 - Math.random())
-
-
   useEffect(()=> {
-    const input = [beg_data,int_data,adv_data]
-    const action = createKanjiLists(input)
-    dispatch(action)
+    if (!levels.some((element) => {return element === undefined}) && !loaded) {
+      const input = [beg_data,int_data,adv_data]
+      const action = createKanjiLists(input)
+      dispatch(action)
+      setLoaded(true)
+    }
   })
 
   return (
@@ -45,10 +44,9 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<LandingPage/>}/>
-            {/* add a side bar element for home so all child outlet routes have it too */}
             <Route path="home" element={<><SideMenu/><MainDisplay/></>}>
               <Route path="challenge" element={<Challenge/>}/>
-              <Route path="recognition" element={<Recognition/>}/>
+              <Route path="recognition" element={loaded ? <Recognition/> : <></>}/>
               <Route path="comprehension" element={<Comprehension/>}/>
               <Route path="pairings" element={<Pairings/>}/>
             </Route>
