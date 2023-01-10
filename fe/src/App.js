@@ -25,11 +25,11 @@ function App() {
   ]
 
   //create master kanji lists
-  const beg_data = levels[0] && levels[1] && levels[2] ? [...levels[0]].concat([...levels[1]]).concat([...levels[2]]) : ['loading']
-  const int_data = levels[3] && levels[4] && levels[5] ? [...levels[3]].concat([...levels[4]]).concat([...levels[5]]) : ['loading']
+  const beg_data = levels[0] && levels[1] ? [...levels[0]].concat([...levels[1]]) : ['loading']
+  const int_data = levels[2] && levels[3] && levels[4] && levels[5] ? [...levels[2]].concat([...levels[3]]).concat([...levels[4]]).concat([...levels[5]]) : ['loading']
   const adv_data = levels[6] ? [...levels[6]] : ['loading']
 
-  useEffect(()=> {
+  useEffect(()=> { // eslint-disable-line
     if (!levels.some((element) => {return element === undefined}) && !loaded) {
       const input = [beg_data,int_data,adv_data]
       const action = createKanjiLists(input)

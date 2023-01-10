@@ -1,5 +1,6 @@
 //for storing pre-arranged lists of kanji for each difficulty level
 import { createSlice } from '@reduxjs/toolkit'
+import { kanjiDict } from '../kanjiDict';
 
 const initialState = {
   kanjiLists: {
@@ -21,7 +22,8 @@ const initialState = {
     beginner: null,
     intermediate: null,
     advanced: null,
-  }
+  },
+  kanjiDict: kanjiDict
 };
 
 // Create the slice of data for managing lists of kanji to use for varying difficulty levels
@@ -51,8 +53,8 @@ export const kanjiSlice = createSlice({
     nextKanji: (state, action) => {
       // action payload should come in as list name
       if (action && action.payload in state.Qs)
-        // replenish and shuffle queue if less than 10 words remaining in corresponding queue
-        if (state.Qs[action.payload].length < 10) {
+        // replenish and shuffle queue if less than 40 words remaining in corresponding queue
+        if (state.Qs[action.payload].length < 40) {
           state.Qs[action.payload] = [...state.kanjiLists[action.payload]].sort((a, b) => 0.5 - Math.random())
         }
         // update next1 and next5 states for corresponding level

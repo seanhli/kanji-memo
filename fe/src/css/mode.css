@@ -4,8 +4,8 @@
 
 .kanji-recognition {
     display: grid;
-    margin-left: min(-3.5vw,-50px);
-    grid-template-columns: repeat(6, auto);
+    margin-left: min(-6vw,-75px);
+    grid-template-columns: repeat(6, 1fr);
     column-gap: max(2vh,20px);
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -28,7 +28,7 @@
 
 .kanji-recognition .answer-box {
     display: inline-block;
-    min-height: max(6vh, 30px);
+    min-height: max(7vh, 40px);
     margin-top: max(1.75vh,12.5px);
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.2);
@@ -46,7 +46,35 @@
 }
 
 .recognition-instructions {
-    margin-top: max(2vh, 15px);
+    margin-top: max(3vh, 15px);
+    margin-bottom: max(2vh, 10px);
     color: rgb(222, 222, 222);
     text-align: center;
+}
+
+.answer-pool {
+    display: grid;
+    margin-left: min(-6vw,-75px);
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: max(2vh,20px);
+    row-gap: max(1.5vh,10px);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.pool-item {
+    display: block;
+    text-align: center;
+    padding: max(0.5vh,4px) max(0.25vh,2px);
+    margin: max(1vh,5px) 10px 0 10px;
+    border: 1px solid white;
+    font-size: max(2vh, 12px);
+    font-weight: 600;
+    color: var(--bg-dark);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 2vh;
 }
