@@ -1,6 +1,6 @@
 import { gsap } from 'gsap'
 
-export default function powerAnimation() {
+export default function powerAnimation(flag) {
     let powerTL = gsap.timeline({paused: true})
 
     const totalGrid = [...Array(50).keys()]
@@ -25,17 +25,7 @@ export default function powerAnimation() {
         fontSize: '1px',
         ease: 'power2.out'
     }, 'start-0')
-    .to('.sub-subtitle', {
-        duration: 0.15,
-        fontSize: '1px',
-        ease: 'power2.out'
-    }, 'start-0')
     .to('.landing-subtitle', {
-        delay: 0.15,
-        duration: 0.1,
-        fontSize: '0px',
-    }, 'start-0')
-    .to('.sub-subtitle', {
         delay: 0.15,
         duration: 0.1,
         fontSize: '0px',
@@ -77,6 +67,20 @@ export default function powerAnimation() {
         left: '-150%',
         ease: 'power2.out'
     }, 'start-0.1')
+
+    if (flag) {
+        powerTL
+        .to('.sub-subtitle', {
+            duration: 0.15,
+            fontSize: '1px',
+            ease: 'power2.out'
+        }, 'start-0')
+        .to('.sub-subtitle', {
+            delay: 0.15,
+            duration: 0.1,
+            fontSize: '0px',
+        }, 'start-0')
+    }
 
     totalGrid.forEach(tile => {
         powerTL

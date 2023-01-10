@@ -20,7 +20,7 @@ function LandingPage() {
 
     function powerClick(event) {
         event.preventDefault()
-        const powerTL = powerAnimation()
+        const powerTL = powerAnimation(subSubtitles[roll] !== null)
         powerTL.play()
         setTimeout(() => {cleanUp(powerTL)},powerTL.duration()*1000+500)
     }

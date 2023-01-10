@@ -45,10 +45,10 @@ function App() {
           <Route path="/">
             <Route index element={<LandingPage/>}/>
             <Route path="home" element={<><SideMenu/><MainDisplay/></>}>
-              <Route path="challenge" element={<Challenge/>}/>
+              <Route path="challenge" element={loaded ? <Challenge/> : <></>}/>
               <Route path="recognition" element={loaded ? <Recognition/> : <></>}/>
-              <Route path="comprehension" element={<Comprehension/>}/>
-              <Route path="pairings" element={<Pairings/>}/>
+              <Route path="comprehension" element={loaded ? <Comprehension/> : <></>}/>
+              <Route path="pairings" element={loaded ? <Pairings/> : <></>}/>
             </Route>
           </Route>
         </Routes>
