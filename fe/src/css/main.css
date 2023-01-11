@@ -42,14 +42,15 @@ img {
   display: block;
   margin-bottom: max(1.5vh, 8px);
   color: white;
-  width: max(13vw, 140px);
+  width: max(10vw, 160px);
+  filter: brightness(0.9);
+
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
-  filter: brightness(0.9)
 }
 
 .menu-title {
@@ -89,7 +90,7 @@ img {
   font-weight: 500;
   font-size: max(2.5vh, 14px);
   margin-left: max(2vw, 15px);
-  margin-bottom: max(1.5vh, 5px);
+  margin-bottom: max(1.5vh, 7.5px);
   width: max(10vw, 130px);
   padding: 0.5vh 1.5vh;
   border: 2px solid white;
@@ -114,7 +115,7 @@ img {
   font-weight: 500;
   font-size: max(2.5vh, 14px);
   margin-left: max(2vw, 15px);
-  margin-bottom: max(1.5vh, 5px);
+  margin-bottom: max(1.5vh, 7.5px);
   width: max(10vw, 130px);
   padding: 0.5vh 1.5vh;
   border: 2px solid white;

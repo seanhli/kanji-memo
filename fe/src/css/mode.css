@@ -28,10 +28,11 @@
 
 .kanji-recognition .answer-box {
     display: inline-block;
-    min-height: max(7vh, 40px);
+    min-height: max(4.5vh, 27.5px);
     margin-top: max(1.75vh,12.5px);
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.2);
+    padding: max(0.25vh, 2.5px) 0 max(1.25vh, 10px) 0;
 }
 
 .labels {
@@ -58,6 +59,8 @@
     grid-template-columns: repeat(6, 1fr);
     column-gap: max(2vh,20px);
     row-gap: max(1.5vh,10px);
+    min-height: 10vh;
+    width: 110%;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -70,11 +73,16 @@
     display: block;
     text-align: center;
     padding: max(0.5vh,4px) max(0.25vh,2px);
-    margin: max(1vh,5px) 10px 0 10px;
+    margin: max(1vh,7.5px) 10px 0 10px;
     border: 1px solid white;
     font-size: max(2vh, 12px);
     font-weight: 600;
     color: var(--bg-dark);
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 2vh;
+    max-height: max(3vh, 20px);
+}
+
+.shiny {
+    box-shadow: 0px 0px 6px 3px rgba(255, 255, 255, 0.6);
 }

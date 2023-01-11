@@ -1,26 +1,30 @@
-import { Fragment, useEffect } from "react"
+import { Fragment, useEffect, useRef, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { nextKanji } from "../store/kanji/kanjiLists"
 
 function Recognition() {
     const dispatch = useDispatch()
+    const [dragging, setDragging] = useState(false)
     const level = useSelector(state => state.menuSlice.level)
     const difficulty = level === 1 ? 'beginner' : level === 2 ? 'intermediate' : 'advanced'
     const kanjiRow = useSelector(state => state.kanjiSlice.next5[difficulty])
     const fillerKanji = useSelector(state => state.kanjiSlice.Qs[difficulty])
     const kanjiDict = useSelector(state => state.kanjiSlice.kanjiDict)
+    const dragItem = useRef()
+    const dragNode = useRef()
 
     useEffect(()=>{
+        setDropLocations(dropLocationsHolder)
         //on component clean up, refresh list of kanji (e.g. when switching to new page)
         return () => {
             dispatch(nextKanji(difficulty))
         }
-    },[]) // eslint-disable-line
+    },[difficulty]) // eslint-disable-line
 
     const kunAnswerKey = [...kanjiRow].map(kanji => kanjiDict[kanji][0])
     const onAnswerKey = [...kanjiRow].map(kanji => kanjiDict[kanji][1])
 
-    const dropLocations = {
+    const dropLocationsHolder = {
         pool: [...kunAnswerKey].concat([...onAnswerKey]).filter(reading => reading !== null)
     }
 
@@ -33,19 +37,92 @@ function Recognition() {
         .filter(pair => pair[0] && pair[1])
         .flat()
 
-    while (dropLocations["pool"].length < 20) {
-        dropLocations["pool"].push(filler.shift())
+    while (dropLocationsHolder["pool"].length < 20) {
+        dropLocationsHolder["pool"].push(filler.shift())
     }
     //shuffle pool
-    dropLocations["pool"].sort((a, b) => 0.5 - Math.random())
+    dropLocationsHolder["pool"].sort((a, b) => 0.5 - Math.random())
+    dropLocationsHolder["kunAnswerBoxes"] = [[], [], [], [], []]
+    dropLocationsHolder["onAnswerBoxes"] = [[], [], [], [], []]
 
-    dropLocations["kunAnswerBoxes"] = [null, null, null, null, null]
-    dropLocations["onAnswerBoxes"] = [null, null, null, null, null]
+    const [dropLocations, setDropLocations] = useState(dropLocationsHolder)
 
     // note the starting location and its index (e.g. (kunAnswerBoxes, 3))
-    // function handleDragStart(e, startCoord) {
+    function handleDragStart(e, [loc, idx, innerIdx]) {
+        dragItem.current = [loc, idx, innerIdx]
+        dragNode.current = e.target
+        dragNode.current.addEventListener('dragend', handleDragEnd)
+        setDragging(true)
+    }
 
-    // }
+    // governs what happens when drag and droppable spots intersect
+    function handleDragEnter(e, [loc, idx, innerIdx]) {
+        if (!(dragItem.current[0] === loc && dragItem.current[1] === idx && dragItem.current[2] === innerIdx)) {
+            if (e.target.id) {
+                const box = document.getElementById(e.target.id)
+                if (box) {
+                    box.classList.add("shiny")
+                }
+            }
+
+            setDropLocations(oldDrop => {
+                let newDrop = JSON.parse(JSON.stringify(oldDrop))
+
+                if (dragItem.current) {
+                    // non-pool drop spots
+                    // insert into beginning of list if empty otherwise insert before current drop spot item
+                    if (loc !== 'pool') {
+                        newDrop[loc][idx].splice(oldDrop[loc][idx].length === 0 ? 0 : innerIdx, 0,
+                            dragItem.current[0] === 'pool'
+                            // cutting from pool
+                            ? newDrop[dragItem.current[0]].splice(dragItem.current[1],1)
+                            // cutting from other locations
+                            : newDrop[dragItem.current[0]][dragItem.current[1]].splice(dragItem.current[2],1)
+                        )
+                        // clean up then update dragItem and dragNode
+                        // clean up has to be in this block (or things get wonky)
+                        dragNode.current = null
+                        dragNode.current = e.target
+                        dragItem.current = [loc, idx, innerIdx]
+                    }
+                    // for pool drop spot
+                    // similar logic to above, but only with idx, no inneridx
+                    else {
+                        if (idx || oldDrop[loc].length === 0) {
+                            newDrop[loc].splice(oldDrop[loc].length === 0 ? 0 : idx, 0,
+                                dragItem.current[0] === 'pool'
+                                // cutting from pool
+                                ? newDrop[dragItem.current[0]].splice(dragItem.current[1],1)
+                                // cutting from other locations
+                                : newDrop[dragItem.current[0]][dragItem.current[1]].splice(dragItem.current[2],1)
+                            )
+                            // clean up then update dragItem and dragNode
+                            // clean up has to be in this block (or things get wonky)
+                            dragNode.current = null
+                            dragNode.current = e.target
+                            dragItem.current = [loc, idx, innerIdx]
+                        }
+                    }
+                }
+
+
+                return newDrop
+            })
+        }
+    }
+
+    function handleDragLeave(e) {
+        const box = document.getElementById(e.target.id)
+        if (box && box.classList.contains("shiny")) {
+            box.classList.remove("shiny")
+        }
+    }
+
+    function handleDragEnd() {
+        setDragging(false)
+        dragItem.current = null
+        dragNode.current = null
+    }
 
     return (
         <>
@@ -60,26 +137,54 @@ function Recognition() {
                     )
                 })}
                 <div className="labels">kun</div>
-                {dropLocations["kunAnswerBoxes"].map((item, idx) => {
+                {dropLocations["kunAnswerBoxes"].map((col, idx) => {
                     return (
                         <div className="answer-box"
-                            key={`box-${idx}`}>
-                            {item &&
-                                <div className="pool-item">
-                                    {item}
-                                </div>}
+                            key={`box-${idx}`}
+                            id={`kun-${idx}`}
+                            onDragEnter={e=>handleDragEnter(e, ["kunAnswerBoxes", idx, null])}
+                            onDragLeave={e=>handleDragLeave(e)}
+                        >
+                            {col.map((item, itemIdx)=>{
+                                return (
+                                    <div className="pool-item"
+                                        draggable
+                                        id={`pi-kun-${idx}-${itemIdx}`}
+                                        key={`pi-kun-${idx}-${itemIdx}`}
+                                        onDragStart={e=>{handleDragStart(e, ["kunAnswerBoxes", idx, null])}}
+                                        onDragEnter={e=>handleDragEnter(e, ["kunAnswerBoxes", idx, itemIdx])}
+                                        onDragLeave={e=>handleDragLeave(e)}
+                                    >
+                                        {item}
+                                    </div>
+                                )
+                            })}
                         </div>
                     )
                 })}
                 <div className="labels">on</div>
-                {dropLocations["onAnswerBoxes"].map((item, idx) => {
+                {dropLocations["onAnswerBoxes"].map((col, idx) => {
                     return (
                         <div className="answer-box"
-                            key={`box-${idx}`}>
-                            {item &&
-                                <div className="pool-item">
-                                    {item}
-                                </div>}
+                            key={`box-${idx}`}
+                            id={`on-${idx}`}
+                            onDragEnter={e=>handleDragEnter(e, ["onAnswerBoxes", idx, null])}
+                            onDragLeave={e=>handleDragLeave(e)}
+                        >
+                            {col.map((item, itemIdx)=>{
+                                return (
+                                    <div className="pool-item"
+                                        draggable
+                                        id={`pi-on-${idx}-${itemIdx}`}
+                                        key={`pi-on-${idx}-${itemIdx}`}
+                                        onDragStart={e=>{handleDragStart(e, ["onAnswerBoxes", idx, null])}}
+                                        onDragEnter={e=>handleDragEnter(e, ["onAnswerBoxes", idx, itemIdx])}
+                                        onDragLeave={e=>handleDragLeave(e)}
+                                    >
+                                        {item}
+                                    </div>
+                                )
+                            })}
                         </div>
                     )
                 })}
@@ -87,7 +192,8 @@ function Recognition() {
             <div className="recognition-instructions">
                 From below, drag and drop the correct kun and on readings for the kanji above (some may have only one)
             </div>
-            <div className="answer-pool">
+            <div className="answer-pool"
+                onDragEnter={e=>handleDragEnter(e, ["pool", null, null])}>
                 {dropLocations["pool"].map((item,idx) => {
                     return (
                     <Fragment key={`${idx}-${item}`}>
@@ -96,9 +202,9 @@ function Recognition() {
                             </div>}
                         <div className="pool-item"
                             draggable
-                            onDragStart={e=>{console.log("THIS GON BE GOOD")}}
-                            onDragEnd={e=>{console.log(e.target)}}
-                            onDrop={e=>{console.log("oopsie")}}>
+                            onDragStart={e=>{handleDragStart(e, ["pool", idx, null])}}
+                            onDragEnter={dragging ? e=>{handleDragEnter(e, ["pool", idx, null])} : null}
+                            >
                             {item}
                         </div>
                     </Fragment>
