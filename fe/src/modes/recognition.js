@@ -10,7 +10,8 @@ function Recognition() {
   // tracks whether a user is doing first attempt, still attempting, has succeeded, or given up
   const [attempted, setAttempted] = useState(0);
   // used for moving to next set of 5 kanji
-  const [probSet, setProbSet] = useState(0)
+  const [switchA, setSwitchA] = useState(0);
+  const [switchB, setSwitchB] = useState(0);
   const level = useSelector((state) => state.menuSlice.level);
   const difficulty =
     level === 1 ? "beginner" : level === 2 ? "intermediate" : "advanced";
@@ -19,52 +20,82 @@ function Recognition() {
   const kanjiDict = useSelector((state) => state.kanjiSlice.kanjiDict);
   const dragItem = useRef();
   const dragNode = useRef();
+  const prevDifficultyLevel = useRef(level);
 
   const successMessages = {
-    perfect: ["i'm starting to suspect you actually like kanji","impossibru, a perfect clear?!","feelsgoodman"],
-    great: ["so good, much wow","omega goodo jobu","ha! kanji nerd"],
-    good: ["so you think you know kanji now","not bad - asian parent"],
-    bad: ["i didn't want rice tonight anyways","kanji defeats us all","pain... desu","feelsbadman"],
-    wtf: ["sumi the nani the sen was that","you are on a whole different level..."]
-  }
-
-  const kunAnswerKey = [...kanjiRow].map((kanji) => kanjiDict[kanji][0]);
-  const onAnswerKey = [...kanjiRow].map((kanji) => kanjiDict[kanji][1]);
-
-  const dropLocationsHolder = {
-    pool: [...kunAnswerKey]
-      .concat([...onAnswerKey])
-      .filter((reading) => reading !== null),
+    perfect: [
+      "i'm starting to suspect you actually like kanji",
+      "impossibru, a perfect clear?!",
+      "feelsgoodman",
+    ],
+    great: ["so good, much wow", "omega goodo jobu", "ha! kanji nerd"],
+    good: ["so you think you know kanji now", "not bad - asian parent"],
+    bad: [
+      "i didn't want rice tonight anyways",
+      "kanji defeats us all",
+      "pain... desu",
+      "feelsbadman",
+    ],
+    wtf: [
+      "sumi the nani the sen was that",
+      "you are on a whole different level...",
+    ],
   };
 
-  const filler = [...Array(fillerKanji.length).keys()]
-    //take random sampling of 20 kanji from remaining queue
-    .sort((a, b) => 0.5 - Math.random())
-    .splice(0, 20)
-    .map((num) => kanjiDict[fillerKanji[num]].slice(0, 2))
-    //remove kanji with null kun or on readings
-    .filter((pair) => pair[0] && pair[1])
-    .flat();
+  let kunAnswerKey = [...kanjiRow].map((kanji) => kanjiDict[kanji][0]);
+  let onAnswerKey = [...kanjiRow].map((kanji) => kanjiDict[kanji][1]);
 
-  //set pool max size based on difficulty
-  while (dropLocationsHolder["pool"].length < 10 + level * 5) {
-    dropLocationsHolder["pool"].push(filler.shift());
-  }
+  const holder = {
+    pool: [],
+    kunAnswerBoxes: [[], [], [], [], []],
+    onAnswerBoxes: [[], [], [], [], []],
+  };
 
-  //shuffle pool
-  dropLocationsHolder["pool"].sort((a, b) => 0.5 - Math.random());
-  dropLocationsHolder["kunAnswerBoxes"] = [[], [], [], [], []];
-  dropLocationsHolder["onAnswerBoxes"] = [[], [], [], [], []];
-
-  const [dropLocations, setDropLocations] = useState(dropLocationsHolder);
+  const [dropLocations, setDropLocations] = useState(holder);
 
   useEffect(() => {
-    setDropLocations(dropLocationsHolder);
+    const refreshPool = () => {
+      const temp = {
+        pool: [...kunAnswerKey]
+          .concat([...onAnswerKey])
+          .filter((reading) => reading !== null),
+        kunAnswerBoxes: [[], [], [], [], []],
+        onAnswerBoxes: [[], [], [], [], []],
+      };
+      const filler = [...Array(fillerKanji.length).keys()]
+        //take random sampling of 20 kanji from remaining queue
+        .sort((a, b) => 0.5 - Math.random())
+        .splice(0, 20)
+        .map((num) => kanjiDict[fillerKanji[num]].slice(0, 2))
+        //remove kanji with null kun or on readings
+        .filter((pair) => pair[0] && pair[1])
+        .flat();
+      while (temp["pool"].length < 10 + level * 5) {
+        temp["pool"].push(filler.shift());
+      }
+      //shuffle pool
+      temp["pool"].sort((a, b) => 0.5 - Math.random());
+      setDropLocations(temp);
+    };
+    refreshPool();
+    if (prevDifficultyLevel.current === level) {
+        setSwitchB(switchB + 1);
+        if (switchA > switchB) {
+        setSwitchA(switchA-1);
+        }
+    } else {
+        prevDifficultyLevel.current = level
+        setSwitchA(0)
+        setSwitchB(0)
+    }
+
     //on component clean up, refresh list of kanji (e.g. when switching to new page)
     return () => {
-      dispatch(nextKanji(difficulty));
+      if (switchA === switchB) {
+        dispatch(nextKanji(difficulty));
+      }
     };
-  }, [difficulty, probSet]); // eslint-disable-line
+  }, [difficulty, switchA]); // eslint-disable-line
 
   // note the starting location and its index (e.g. (kunAnswerBoxes, 3))
   function handleDragStart(e, [loc, idx, innerIdx]) {
@@ -199,31 +230,35 @@ function Recognition() {
     } else {
       setAttempted(1);
     }
-    setTries(tries+1)
+    setTries(tries + 1);
   }
 
   function showAnswers() {
-    const boxes = document.getElementsByClassName('answer-box')
+    const boxes = document.getElementsByClassName("answer-box");
     for (let box of boxes) {
-        box.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+      box.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
     }
-    setDropLocations(oldDrop => {
-        let newDrop = JSON.parse(JSON.stringify(oldDrop));
-        newDrop["kunAnswerBoxes"] = kunAnswerKey.map(answer => answer ? [answer] : [])
-        newDrop["onAnswerBoxes"] = onAnswerKey.map(answer => answer ? [answer] : [])
-        return newDrop
-    })
-    setAttempted(3)
+    setDropLocations((oldDrop) => {
+      let newDrop = JSON.parse(JSON.stringify(oldDrop));
+      newDrop["kunAnswerBoxes"] = kunAnswerKey.map((answer) =>
+        answer ? [answer] : []
+      );
+      newDrop["onAnswerBoxes"] = onAnswerKey.map((answer) =>
+        answer ? [answer] : []
+      );
+      return newDrop;
+    });
+    setAttempted(3);
   }
 
   function goNext() {
-    const boxes = document.getElementsByClassName('answer-box')
+    const boxes = document.getElementsByClassName("answer-box");
     for (let box of boxes) {
-        box.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+      box.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
     }
-    setAttempted(0)
-    setTries(0)
-    setProbSet(probSet+1)
+    setAttempted(0);
+    setTries(0);
+    setSwitchA(switchA + 3);
   }
 
   return (
@@ -365,8 +400,14 @@ function Recognition() {
                 try again
               </div>
               {/* on click show next button */}
-              <div className="recognition-submit-button"
-                onClick={()=>{showAnswers()}}>give up</div>
+              <div
+                className="recognition-submit-button"
+                onClick={() => {
+                  showAnswers();
+                }}
+              >
+                give up
+              </div>
             </>
           )}
         </>
@@ -374,13 +415,43 @@ function Recognition() {
       {attempted === 2 && (
         <>
           <div className="recognition-instructions">
-            {successMessages[tries <= 1 ? "perfect" : tries <= 3 ? "great" : tries <= 5 ? "good" : tries <= 10 ? "bad" : "wtf"][
-                Math.floor(Math.random() * successMessages[tries <= 1 ? "perfect" : tries <= 3 ? "great" : tries <= 5 ? "good" : tries <= 10 ? "bad" : "wtf"].length)
-            ]
+            {
+              successMessages[
+                tries <= 1
+                  ? "perfect"
+                  : tries <= 3
+                  ? "great"
+                  : tries <= 5
+                  ? "good"
+                  : tries <= 10
+                  ? "bad"
+                  : "wtf"
+              ][
+                Math.floor(
+                  Math.random() *
+                    successMessages[
+                      tries <= 1
+                        ? "perfect"
+                        : tries <= 3
+                        ? "great"
+                        : tries <= 5
+                        ? "good"
+                        : tries <= 10
+                        ? "bad"
+                        : "wtf"
+                    ].length
+                )
+              ]
             }
           </div>
-          <div className="recognition-submit-button"
-            onClick={()=>{goNext()}}>next set</div>
+          <div
+            className="recognition-submit-button"
+            onClick={() => {
+              goNext();
+            }}
+          >
+            next set
+          </div>
         </>
       )}
       {attempted === 3 && (
@@ -388,8 +459,14 @@ function Recognition() {
           <div className="recognition-instructions">
             no shame. i'd do the same :)
           </div>
-          <div className="recognition-submit-button"
-            onClick={()=>{goNext()}}>next set</div>
+          <div
+            className="recognition-submit-button"
+            onClick={() => {
+              goNext();
+            }}
+          >
+            next set
+          </div>
         </>
       )}
     </div>
