@@ -20,20 +20,12 @@ function Recognition() {
   const dragItem = useRef();
   const dragNode = useRef();
 
-  useEffect(() => {
-    //on component clean up, refresh list of kanji (e.g. when switching to new page)
-    return () => {
-      dispatch(nextKanji(difficulty));
-      setDropLocations(dropLocationsHolder);
-    };
-  }, [difficulty, probSet]); // eslint-disable-line
-
   const successMessages = {
     perfect: ["i'm starting to suspect you actually like kanji","impossibru, a perfect clear?!","feelsgoodman"],
     great: ["so good, much wow","omega goodo jobu","ha! kanji nerd"],
     good: ["so you think you know kanji now","not bad - asian parent"],
     bad: ["i didn't want rice tonight anyways","kanji defeats us all","pain... desu","feelsbadman"],
-    wtf: ["sumi the nani the fking sen","you on a whole different level"]
+    wtf: ["sumi the nani the sen was that","you are on a whole different level..."]
   }
 
   const kunAnswerKey = [...kanjiRow].map((kanji) => kanjiDict[kanji][0]);
@@ -65,6 +57,14 @@ function Recognition() {
   dropLocationsHolder["onAnswerBoxes"] = [[], [], [], [], []];
 
   const [dropLocations, setDropLocations] = useState(dropLocationsHolder);
+
+  useEffect(() => {
+    setDropLocations(dropLocationsHolder);
+    //on component clean up, refresh list of kanji (e.g. when switching to new page)
+    return () => {
+      dispatch(nextKanji(difficulty));
+    };
+  }, [difficulty, probSet]); // eslint-disable-line
 
   // note the starting location and its index (e.g. (kunAnswerBoxes, 3))
   function handleDragStart(e, [loc, idx, innerIdx]) {
