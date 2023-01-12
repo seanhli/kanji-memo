@@ -4,7 +4,7 @@
 
 .kanji-recognition {
     display: grid;
-    margin-left: min(-6vw,-75px);
+    margin-left: min(-8vw,-95px);
     grid-template-columns: repeat(6, 1fr);
     column-gap: max(2vh,20px);
     -webkit-touch-callout: none; /* iOS Safari */
@@ -61,7 +61,7 @@
 
 .answer-pool {
     display: grid;
-    margin-left: min(-6vw,-75px);
+    margin-left: min(-8vw,-95px);
     grid-template-columns: repeat(6, 1fr);
     column-gap: max(2vh,20px);
     row-gap: max(1.5vh,10px);

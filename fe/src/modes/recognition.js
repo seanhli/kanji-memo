@@ -5,7 +5,12 @@ import { nextKanji } from "../store/kanji/kanjiLists";
 function Recognition() {
   const dispatch = useDispatch();
   const [dragging, setDragging] = useState(false);
+  // for tracking how many guesses a user takes
+  const [tries, setTries] = useState(0);
+  // tracks whether a user is doing first attempt, still attempting, has succeeded, or given up
   const [attempted, setAttempted] = useState(0);
+  // used for moving to next set of 5 kanji
+  const [probSet, setProbSet] = useState(0)
   const level = useSelector((state) => state.menuSlice.level);
   const difficulty =
     level === 1 ? "beginner" : level === 2 ? "intermediate" : "advanced";
@@ -16,12 +21,20 @@ function Recognition() {
   const dragNode = useRef();
 
   useEffect(() => {
-    setDropLocations(dropLocationsHolder);
     //on component clean up, refresh list of kanji (e.g. when switching to new page)
     return () => {
       dispatch(nextKanji(difficulty));
+      setDropLocations(dropLocationsHolder);
     };
-  }, [difficulty]); // eslint-disable-line
+  }, [difficulty, probSet]); // eslint-disable-line
+
+  const successMessages = {
+    perfect: ["i'm starting to suspect you actually like kanji","impossibru, a perfect clear?!","feelsgoodman"],
+    great: ["so good, much wow","omega goodo jobu","ha! kanji nerd"],
+    good: ["so you think you know kanji now","not bad - asian parent"],
+    bad: ["i didn't want rice tonight anyways","kanji defeats us all","pain... desu","feelsbadman"],
+    wtf: ["sumi the nani the fking sen","you on a whole different level"]
+  }
 
   const kunAnswerKey = [...kanjiRow].map((kanji) => kanjiDict[kanji][0]);
   const onAnswerKey = [...kanjiRow].map((kanji) => kanjiDict[kanji][1]);
@@ -41,9 +54,11 @@ function Recognition() {
     .filter((pair) => pair[0] && pair[1])
     .flat();
 
-  while (dropLocationsHolder["pool"].length < 20) {
+  //set pool max size based on difficulty
+  while (dropLocationsHolder["pool"].length < 10 + level * 5) {
     dropLocationsHolder["pool"].push(filler.shift());
   }
+
   //shuffle pool
   dropLocationsHolder["pool"].sort((a, b) => 0.5 - Math.random());
   dropLocationsHolder["kunAnswerBoxes"] = [[], [], [], [], []];
@@ -184,6 +199,31 @@ function Recognition() {
     } else {
       setAttempted(1);
     }
+    setTries(tries+1)
+  }
+
+  function showAnswers() {
+    const boxes = document.getElementsByClassName('answer-box')
+    for (let box of boxes) {
+        box.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+    }
+    setDropLocations(oldDrop => {
+        let newDrop = JSON.parse(JSON.stringify(oldDrop));
+        newDrop["kunAnswerBoxes"] = kunAnswerKey.map(answer => answer ? [answer] : [])
+        newDrop["onAnswerBoxes"] = onAnswerKey.map(answer => answer ? [answer] : [])
+        return newDrop
+    })
+    setAttempted(3)
+  }
+
+  function goNext() {
+    const boxes = document.getElementsByClassName('answer-box')
+    for (let box of boxes) {
+        box.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+    }
+    setAttempted(0)
+    setTries(0)
+    setProbSet(probSet+1)
   }
 
   return (
@@ -302,6 +342,7 @@ function Recognition() {
               );
             })}
           </div>
+          {/* for first try */}
           {attempted < 1 && (
             <div
               className="recognition-submit-button"
@@ -312,6 +353,7 @@ function Recognition() {
               submit
             </div>
           )}
+          {/* for 2nd+ try but still not complete */}
           {attempted === 1 && (
             <>
               <div
@@ -323,18 +365,31 @@ function Recognition() {
                 try again
               </div>
               {/* on click show next button */}
-              <div className="recognition-submit-button">show answers</div>
+              <div className="recognition-submit-button"
+                onClick={()=>{showAnswers()}}>give up</div>
             </>
           )}
         </>
       )}
       {attempted === 2 && (
         <>
-            {/* add a counter on check answer that counts up on click. change dialogue based on that */}
-            <div className="recognition-instructions">
-                pfft that was so easy right
-            </div>
-            <div className="recognition-submit-button">next set</div>
+          <div className="recognition-instructions">
+            {successMessages[tries <= 1 ? "perfect" : tries <= 3 ? "great" : tries <= 5 ? "good" : tries <= 10 ? "bad" : "wtf"][
+                Math.floor(Math.random() * successMessages[tries <= 1 ? "perfect" : tries <= 3 ? "great" : tries <= 5 ? "good" : tries <= 10 ? "bad" : "wtf"].length)
+            ]
+            }
+          </div>
+          <div className="recognition-submit-button"
+            onClick={()=>{goNext()}}>next set</div>
+        </>
+      )}
+      {attempted === 3 && (
+        <>
+          <div className="recognition-instructions">
+            no shame. i'd do the same :)
+          </div>
+          <div className="recognition-submit-button"
+            onClick={()=>{goNext()}}>next set</div>
         </>
       )}
     </div>

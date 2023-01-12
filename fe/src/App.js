@@ -5,7 +5,7 @@ import SideMenu from './sideMenu';
 import MainDisplay from './mainDisplay';
 import LandingPage from "./landing";
 import Recognition from './modes/recognition';
-import Challenge from './modes/challenge';
+// import Challenge from './modes/challenge';
 import Pairings from './modes/pairings';
 import Comprehension from './modes/comprehension';
 import { useGetGradeNKanjiQuery, useGetJoyoKanjiQuery } from './store/kanjiAPI';
@@ -45,7 +45,7 @@ function App() {
           <Route path="/">
             <Route index element={<LandingPage/>}/>
             <Route path="home" element={<><SideMenu/><MainDisplay/></>}>
-              <Route path="challenge" element={loaded ? <Challenge/> : <></>}/>
+              {/* <Route path="challenge" element={loaded ? <Challenge/> : <></>}/> */}
               <Route path="recognition" element={loaded ? <Recognition/> : <></>}/>
               <Route path="comprehension" element={loaded ? <Comprehension/> : <></>}/>
               <Route path="pairings" element={loaded ? <Pairings/> : <></>}/>

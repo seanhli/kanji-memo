@@ -42,9 +42,8 @@ img {
   display: block;
   margin-bottom: max(1.5vh, 8px);
   color: white;
-  width: max(10vw, 160px);
+  width: auto;
   filter: brightness(0.9);
-
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -89,7 +88,7 @@ img {
 .menu-item {
   font-weight: 500;
   font-size: max(2.5vh, 14px);
-  margin-left: max(2vw, 15px);
+  margin-left: max(1.5vw, 15px);
   margin-bottom: max(1.5vh, 7.5px);
   width: max(10vw, 130px);
   padding: 0.5vh 1.5vh;
@@ -103,18 +102,18 @@ img {
 }
 
 .menu .menu-item:nth-child(4) {
-  animation: fadeIn 0.75s ease-out 0.15s both;
+  animation: fadeIn 0.75s ease-out 0.1s both;
 }
 
 .menu .menu-item:nth-child(5) {
-  animation: fadeIn 0.75s ease-out 0.3s both;
+  animation: fadeIn 0.75s ease-out 0.2s both;
 }
 
 .nav-link {
   display: block;
   font-weight: 500;
   font-size: max(2.5vh, 14px);
-  margin-left: max(2vw, 15px);
+  margin-left: max(1.5vw, 15px);
   margin-bottom: max(1.5vh, 7.5px);
   width: max(10vw, 130px);
   padding: 0.5vh 1.5vh;
@@ -131,15 +130,15 @@ img {
 }
 
 .menu .nav-link:nth-child(4) {
-  animation: fadeIn 0.75s ease-out 0.15s both;
+  animation: fadeIn 0.75s ease-out 0.1s both;
 }
 
 .menu .nav-link:nth-child(5) {
-  animation: fadeIn 0.75s ease-out 0.3s both;
+  animation: fadeIn 0.75s ease-out 0.2s both;
 }
 
 .menu .nav-link:nth-child(6) {
-  animation: fadeIn 0.75s ease-out 0.45s both;
+  animation: fadeIn 0.75s ease-out 0.3s both;
 }
 
 
