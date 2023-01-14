@@ -27,7 +27,7 @@ function LandingPage() {
 
   function cleanUp(tl) {
     // tl.time(0).kill()
-    navigate("/home/recognition/");
+    navigate("/home/reading/");
   }
 
   useEffect(() => {
