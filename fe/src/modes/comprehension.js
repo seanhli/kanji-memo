@@ -173,7 +173,7 @@ function Comprehension() {
           {answerOptions.map((choice, idx) => {
             return (
               <div className="comp-mc-option" key={choice} id={`mc-${idx}`}
-              onClick={e=>{checkAnswer(e, choice)}}>
+              onClick={!attempted ? e=>{checkAnswer(e, choice)} : null}>
                 {choice}
               </div>
             );
