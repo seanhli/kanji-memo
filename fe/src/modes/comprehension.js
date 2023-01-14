@@ -17,8 +17,8 @@ function Comprehension() {
   const [attempted, setAttempted] = useState(false);
   // used for moving to next set of 5 kanji
   const prevDifficultyLevel = useRef(level);
-  const [switchA, setSwitchA] = useState(0);
-  const [switchB, setSwitchB] = useState(0);
+  const [switchA, setSwitchA] = useState(3);
+  const [switchB, setSwitchB] = useState(1);
 
   useEffect(() => {
     const kanjiVal = kanjiDict[kanji];
@@ -39,8 +39,8 @@ function Comprehension() {
       }
     } else {
       prevDifficultyLevel.current = level;
-      setSwitchA(0);
-      setSwitchB(0);
+      setSwitchA(3);
+      setSwitchB(1);
     }
 
     return () => {
