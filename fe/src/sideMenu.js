@@ -34,28 +34,28 @@ function SideMenu() {
                         challenge
                     </NavLink> */}
             <NavLink
-              to={"/home/recognition/"}
+              to={"/home/reading/"}
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
               }
             >
-              recognition
+              reading
             </NavLink>
             <NavLink
-              to={"/home/comprehension/"}
+              to={"/home/meaning/"}
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
               }
             >
-              comprehension
+              meaning
             </NavLink>
             <NavLink
-              to={"/home/pairings/"}
+              to={"/home/vocab/"}
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
               }
             >
-              pairings
+              vocab
             </NavLink>
           </>
         )}

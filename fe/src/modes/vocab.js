@@ -1,4 +1,4 @@
-function Pairings() {
+function Vocab() {
     return (
         <>
             HIHIHI
@@ -6,4 +6,4 @@ function Pairings() {
     )
 }
 
-export default Pairings
+export default Vocab

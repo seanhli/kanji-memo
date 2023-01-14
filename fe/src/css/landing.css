@@ -24,12 +24,6 @@
     margin-left: min(-12.5vh, -50px);
     top: 10vh;
     width: max(25vh, 100px);
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
 }
 
 .landing-banner img {
@@ -72,12 +66,6 @@
     width: max(7vh, 30px);
     height: max(7vh, 30px);
     filter: invert(1) brightness(0.7);
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
 }
 
 .power-button img {
