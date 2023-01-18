@@ -11,6 +11,7 @@ import Comprehension from './modes/comprehension';
 import { useGetGradeNKanjiQuery, useGetJoyoKanjiQuery } from './store/kanjiAPI';
 import { useDispatch } from 'react-redux';
 import { createKanjiLists } from './store/kanji/kanjiLists';
+import { createVocabLists } from './store/kanji/vocabLists';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
       const input = [beg_data,int_data,adv_data]
       const action = createKanjiLists(input)
       dispatch(action)
+      dispatch(createVocabLists())
       setLoaded(true)
     }
   })

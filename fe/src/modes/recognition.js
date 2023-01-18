@@ -10,8 +10,8 @@ function Recognition() {
   // tracks whether a user is doing first attempt, still attempting, has succeeded, or given up
   const [attempted, setAttempted] = useState(0);
   // used for moving to next set of 5 kanji
-  const [switchA, setSwitchA] = useState(0);
-  const [switchB, setSwitchB] = useState(0);
+  const [switchA, setSwitchA] = useState(3);
+  const [switchB, setSwitchB] = useState(1);
   const level = useSelector((state) => state.menuSlice.level);
   const difficulty =
     level === 1 ? "beginner" : level === 2 ? "intermediate" : "advanced";
@@ -85,8 +85,8 @@ function Recognition() {
         }
     } else {
         prevDifficultyLevel.current = level
-        setSwitchA(0)
-        setSwitchB(0)
+        setSwitchA(3)
+        setSwitchB(1)
     }
 
     //on component clean up, refresh list of kanji (e.g. when switching to new page)
