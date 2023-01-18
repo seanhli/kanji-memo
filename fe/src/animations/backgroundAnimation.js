@@ -1,19 +1,18 @@
 function BackgroundAnimation() {
-
-    return (
-        <>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-            <div className="back-box"></div>
-        </>
-    )
+  return (
+    <>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+      <div className="back-box"></div>
+    </>
+  );
 }
 
-export default BackgroundAnimation
+export default BackgroundAnimation;

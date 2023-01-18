@@ -13,13 +13,13 @@ export const menuSlice = createSlice({
     toggleMenu: (state, action) => {
       // action payload should come in for which menu
       if (action.payload in state) {
-        state[action.payload] = !state[action.payload]
+        state[action.payload] = !state[action.payload];
       }
     },
     changeLevel: (state, action) => {
       // action payload should indicate which level
       if (1 <= action.payload && action.payload <= 3) {
-        state.level = action.payload
+        state.level = action.payload;
       }
     },
   },

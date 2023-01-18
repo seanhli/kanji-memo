@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   beginner: {
     total: 0,
-    correct: 0
+    correct: 0,
   },
   intermediate: {
     total: 0,
-    correct: 0
+    correct: 0,
   },
   advanced: {
     total: 0,
-    correct: 0
-  }
+    correct: 0,
+  },
 };
 
 export const trackingSlice = createSlice({
@@ -21,8 +21,8 @@ export const trackingSlice = createSlice({
   reducers: {
     updateScore: (state, action) => {
       // action payload should be an array [difficulty, a 1 or 0 (1 for correct, 0 for not)]
-      state[action.payload[0]]["total"] += 1
-      state[action.payload[0]]["correct"] += action.payload[1]
+      state[action.payload[0]]["total"] += 1;
+      state[action.payload[0]]["correct"] += action.payload[1];
     },
   },
 });

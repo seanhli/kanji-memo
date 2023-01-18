@@ -1,9 +1,5 @@
 function Challenge() {
-    return (
-        <>
-            HIHIHI
-        </>
-    )
+  return <>WIP</>;
 }
 
-export default Challenge
+export default Challenge;

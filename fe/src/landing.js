@@ -31,7 +31,7 @@ function LandingPage() {
   }
 
   useEffect(() => {
-    setTimeout(()=>setLoaded(true),500)
+    setTimeout(() => setLoaded(true), 500);
   }, []);
 
   return (

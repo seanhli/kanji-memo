@@ -86,6 +86,7 @@ function SideMenu() {
               onClick={(e) => {
                 dispatch(changeLevel(1));
               }}
+              title="JLPT N5 - N4"
             >
               beginner
             </div>
@@ -96,6 +97,7 @@ function SideMenu() {
               onClick={(e) => {
                 dispatch(changeLevel(2));
               }}
+              title="JLPT N3 - N2"
             >
               intermediate
             </div>
@@ -106,6 +108,7 @@ function SideMenu() {
               onClick={(e) => {
                 dispatch(changeLevel(3));
               }}
+              title="JLPT N1 / all joyo kanji"
             >
               advanced
             </div>

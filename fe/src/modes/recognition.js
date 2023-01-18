@@ -32,14 +32,10 @@ function Recognition() {
     good: ["so you think you know kanji now", "not bad - asian parent"],
     bad: [
       "i didn't want rice tonight anyways",
-      "kanji defeats us all",
-      "pain... desu",
+      "doctor, it hurts in my kokoro",
       "feelsbadman",
     ],
-    wtf: [
-      "sumi the nani the sen was that",
-      "you are on a whole different level...",
-    ],
+    wtf: ["pain... desu", "today's fortune: kanji may not be the one for you"],
   };
 
   let kunAnswerKey = [...kanjiRow].map((kanji) => kanjiDict[kanji][0]);
@@ -79,14 +75,14 @@ function Recognition() {
     };
     refreshPool();
     if (prevDifficultyLevel.current === level) {
-        setSwitchB(switchB + 1);
-        if (switchA > switchB) {
-        setSwitchA(switchA-1);
-        }
+      setSwitchB(switchB + 1);
+      if (switchA > switchB) {
+        setSwitchA(switchA - 1);
+      }
     } else {
-        prevDifficultyLevel.current = level
-        setSwitchA(3)
-        setSwitchB(1)
+      prevDifficultyLevel.current = level;
+      setSwitchA(3);
+      setSwitchB(1);
     }
 
     //on component clean up, refresh list of kanji (e.g. when switching to new page)

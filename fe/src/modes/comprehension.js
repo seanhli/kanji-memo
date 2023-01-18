@@ -47,7 +47,7 @@ function Comprehension() {
       if (switchA === switchB) {
         dispatch(nextKanji(difficulty));
         setRevealedClues([false, false, false]);
-        setAttempted(false)
+        setAttempted(false);
       }
     };
   }, [difficulty, switchA]); // eslint-disable-line
@@ -72,15 +72,15 @@ function Comprehension() {
     if (input === kanjiDict[kanji][2]) {
       dispatch(updateScore([difficulty, 1]));
       element.style.backgroundColor = "rgba(72, 181, 66, 0.6)";
-      element.style.color = 'white'
+      element.style.color = "white";
     } else {
       dispatch(updateScore([difficulty, 0]));
       element.style.backgroundColor = "rgba(171, 63, 63, 0.4)";
-      element.style.color = 'white'
+      element.style.color = "white";
       const index = answerOptions.indexOf(kanjiDict[kanji][2]);
       const correctBox = document.getElementById(`mc-${index}`);
       correctBox.style.backgroundColor = "rgba(72, 181, 66, 0.6)";
-      correctBox.style.color = 'white'
+      correctBox.style.color = "white";
     }
     setAttempted(true);
   }
@@ -172,8 +172,18 @@ function Comprehension() {
         <div className="comp-answer-pool">
           {answerOptions.map((choice, idx) => {
             return (
-              <div className="comp-mc-option" key={choice} id={`mc-${idx}`}
-              onClick={!attempted ? e=>{checkAnswer(e, choice)} : null}>
+              <div
+                className="comp-mc-option"
+                key={choice}
+                id={`mc-${idx}`}
+                onClick={
+                  !attempted
+                    ? (e) => {
+                        checkAnswer(e, choice);
+                      }
+                    : null
+                }
+              >
                 {choice}
               </div>
             );

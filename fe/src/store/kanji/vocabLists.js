@@ -80,8 +80,10 @@ export const vocabSlice = createSlice({
         }
       // update next1 and answer pool states for corresponding level
       const nextItem = state.Qs[action.payload].shift();
-      state.next1[action.payload] =
-        [nextItem, state.vocabLists[action.payload][nextItem]];
+      state.next1[action.payload] = [
+        nextItem,
+        state.vocabLists[action.payload][nextItem],
+      ];
       state.answerPool[action.payload] = state.Qs[action.payload]
         .splice(0, 8)
         .concat([nextItem])
