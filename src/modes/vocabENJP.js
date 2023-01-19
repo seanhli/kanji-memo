@@ -34,6 +34,9 @@ function VocabENJP() {
   };
 
   useEffect(() => {
+    setAttempted(false);
+    setWrongIdx(99);
+    setCorrectIdx(99);
     dispatch(nextENJPVocab(difficulty));
   }, [difficulty, questionNum]); // eslint-disable-line
 

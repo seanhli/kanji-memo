@@ -34,6 +34,9 @@ function VocabJPEN() {
   };
 
   useEffect(() => {
+    setAttempted(false);
+    setWrongIdx(99);
+    setCorrectIdx(99);
     dispatch(nextJPENVocab(difficulty));
   }, [difficulty, questionNum]); // eslint-disable-line
 
