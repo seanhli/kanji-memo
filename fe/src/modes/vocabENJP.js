@@ -59,7 +59,7 @@ function VocabENJP() {
 
   return (
     <div className="sub-display">
-      <div className="vocab-word">{vocab[1]["meaning"]}</div>
+      <div className="vocab-word">{vocab[1]["meaning"].toLowerCase()}</div>
       {attempted && (
         <div className="vocab-reading">
           {vocab[0]}: {vocab[1]["reading"]}
