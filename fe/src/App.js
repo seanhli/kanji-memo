@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import BackgroundAnimation from "./animations/backgroundAnimation";
 import SideMenu from "./sideMenu";
 import MainDisplay from "./mainDisplay";
@@ -57,7 +57,7 @@ function App() {
   });
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <main>
         <Routes>
           <Route path="/">
@@ -87,7 +87,7 @@ function App() {
         </Routes>
       </main>
       <BackgroundAnimation />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

@@ -88,6 +88,13 @@ export default function powerAnimation(flag) {
       },
       "start-0"
     )
+    .set(
+      ".lower-section",
+      {
+        display: "none",
+      },
+      "start-0.1"
+    )
     //spark trail from right appears
     .to(
       ".spark",
