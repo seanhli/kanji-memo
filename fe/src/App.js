@@ -41,8 +41,7 @@ function App() {
       : ["loading"];
   const adv_data = levels[6] ? [...levels[6]] : ["loading"];
 
-  useEffect(() => {
-    // eslint-disable-line
+  useEffect(() => {// eslint-disable-line
     if (
       !levels.some((element) => {
         return element === undefined;
@@ -58,7 +57,7 @@ function App() {
   });
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <main>
         <Routes>
           <Route path="/">

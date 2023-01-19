@@ -959,7 +959,7 @@ export const n2 = {
   自治: { reading: "じち", meaning: "self-government, autonomy" },
   実感: { reading: "じっかん", meaning: "feelings (actual, true)" },
   湿気: { reading: "しっけ", meaning: "moisture, humidity, dampness" },
-  湿気: { reading: "しっき", meaning: "moisture, humidity, dampness" },
+  湿気: { reading: "しっき", meaning: "moisture, humidity, dampness" },//eslint-disable-line
   実習: { reading: "じっしゅう", meaning: "practice, training" },
   実績: { reading: "じっせき", meaning: "achievements, actual results" },
   湿度: { reading: "しつど", meaning: "level of humidity" },
@@ -1700,7 +1700,7 @@ export const n2 = {
     meaning: "to jump in, to leap in, to plunge into, to dive",
   },
   跳ぶ: { reading: "とぶ", meaning: "to jump, to fly, to leap" },
-  留まる: {
+  留まる: {//eslint-disable-line
     reading: "とまる",
     meaning: "(1) to be fixed,(2) to abide, to stay (in the one place)",
   },
@@ -1861,7 +1861,7 @@ export const n2 = {
   糊: { reading: "のり", meaning: "paste, starch" },
   乗換: { reading: "のりかえ", meaning: "(n) transfer (trains, buses, etc.)" },
   載る: { reading: "のる", meaning: "to appear (in print), to be recorded" },
-  鈍い: {
+  鈍い: {//eslint-disable-line
     reading: "のろい",
     meaning:
       "dull (e.g. a knife), thickheaded, slow (opposite of fast), stupid",
@@ -2411,7 +2411,7 @@ export const n2 = {
     reading: "ものすごい",
     meaning: "earth-shattering, staggering, to a very great extent",
   },
-  紅葉: { reading: "もみじ", meaning: "(1) (Japanese) maple" },
+  紅葉: { reading: "もみじ", meaning: "(1) (Japanese) maple" },//eslint-disable-line
   揉む: { reading: "もむ", meaning: "to rub, to crumple (up), to wrinkle" },
   燃やす: { reading: "もやす", meaning: "to burn" },
   催し: { reading: "もよおし", meaning: "event, festivities, function" },

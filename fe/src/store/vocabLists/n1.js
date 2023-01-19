@@ -101,7 +101,7 @@ export const n1 = {
   },
   彼方此方: { reading: "あちこち", meaning: "here and there" },
   彼方: { reading: "あちら", meaning: "1. there, yonder, that" },
-  彼方此方: { reading: "あちらこちら", meaning: "here and there" },
+  彼方此方: { reading: "あちらこちら", meaning: "here and there" },//eslint-disable-line
   悪化: {
     reading: "あっか",
     meaning:
@@ -1340,7 +1340,7 @@ export const n1 = {
     meaning:
       "combination, union, amalgamation, consolidation, merger, coalition, fusion, annexation, affiliation, incorpor",
   },
-  側: {
+  側: {//eslint-disable-line
     reading: "がわ",
     meaning: "side, row, surroundings, part, (watch) case",
   },
@@ -2073,7 +2073,7 @@ export const n1 = {
   },
   雇用: { reading: "こよう", meaning: "employment (long term), hire" },
   暦: { reading: "こよみ", meaning: "calendar, almanac" },
-  堪える: {
+  堪える: {//eslint-disable-line
     reading: "こらえる",
     meaning:
       "to bear, to stand, to endure, to put up with, to support, to withstand, to resist, to brave, to be fit for, t",
@@ -3280,7 +3280,7 @@ export const n1 = {
     meaning:
       "to be furnished with, to be endowed with, to possess, to be among, to be one of, to be possessed of",
   },
-  園: { reading: "その", meaning: "garden, park, plantation" },
+  園: { reading: "その", meaning: "garden, park, plantation" },//eslint-disable-line
   その上: { reading: "そのうえ", meaning: "in addition, furthermore" },
   その内: {
     reading: "そのうち",
@@ -3389,7 +3389,7 @@ export const n1 = {
     reading: "たえる",
     meaning: "to die out, to peter out, to become extinct",
   },
-  堪える: {
+  堪える: {//eslint-disable-line
     reading: "たえる",
     meaning:
       "to bear, to stand, to endure, to put up with, to support, to withstand, to resist, to brave, to be fit for, t",
@@ -3416,7 +3416,7 @@ export const n1 = {
     reading: "ただよう",
     meaning: "to drift about, to float, to hang in air",
   },
-  館: { reading: "たち", meaning: "1. mansion, small castle" },
+  館: { reading: "たち", meaning: "1. mansion, small castle" },//eslint-disable-line
   立方: { reading: "たちかた", meaning: "dancing (geisha)" },
   忽ち: {
     reading: "たちまち",
@@ -3554,7 +3554,7 @@ export const n1 = {
   代用: { reading: "だいよう", meaning: "substitution" },
   打開: { reading: "だかい", meaning: "break in the deadlock" },
   妥協: { reading: "だきょう", meaning: "compromise, giving in" },
-  丈: { reading: "だけ", meaning: "only, just, as" },
+  丈: { reading: "だけ", meaning: "only, just, as" },//eslint-disable-line
   妥結: { reading: "だけつ", meaning: "agreement" },
   打撃: {
     reading: "だげき",
@@ -4253,12 +4253,12 @@ export const n1 = {
   土台: { reading: "どだい", meaning: "foundation, base, basis" },
   何方: { reading: "どちら", meaning: "which, who" },
   土手: { reading: "どて", meaning: "embankment, bank" },
-  何方: { reading: "どなた", meaning: "who?" },
+  何方: { reading: "どなた", meaning: "who?" },//eslint-disable-line
   怒鳴る: { reading: "どなる", meaning: "to shout, to yell" },
   何の: { reading: "どの", meaning: "which, what" },
   土俵: { reading: "どひょう", meaning: "arena" },
   土木: { reading: "どぼく", meaning: "public works" },
-  何れ: {
+  何れ: {//eslint-disable-line
     reading: "どれ",
     meaning: "well, now, let me see, which (of three or more)",
   },
@@ -4319,7 +4319,7 @@ export const n1 = {
     reading: "なにしろ",
     meaning: "at any rate, anyhow, anyway, in any case",
   },
-  何卒: { reading: "なにとぞ", meaning: "please" },
+  何卒: { reading: "なにとぞ", meaning: "please" },//eslint-disable-line
   何も: { reading: "なにも", meaning: "nothing" },
   何より: { reading: "なにより", meaning: "most, best" },
   七日: {
@@ -4788,7 +4788,7 @@ export const n1 = {
     reading: "ばらまく",
     meaning: "to disseminate, to scatter, to give money freely",
   },
-  判: { reading: "ばん", meaning: "size (of paper or books)" },
+  判: { reading: "ばん", meaning: "size (of paper or books)" },//eslint-disable-line
   万: { reading: "ばん", meaning: "many, all" },
   万人: { reading: "ばんじん", meaning: "all people, everybody, 10000 people" },
   万能: { reading: "ばんのう", meaning: "all-purpose, almighty, omnipotent" },
@@ -5266,7 +5266,7 @@ export const n1 = {
     reading: "ほご",
     meaning: "care, protection, shelter, guardianship, favor, patronage",
   },
-  乾: { reading: "ほし", meaning: "dried, cured" },
+  乾: { reading: "ほし", meaning: "dried, cured" },//eslint-disable-line
   干し物: { reading: "ほしもの", meaning: "dried washing (clothes)" },
   保守: { reading: "ほしゅ", meaning: "conservative, maintaining" },
   保障: {
@@ -5468,7 +5468,7 @@ export const n1 = {
     meaning: "closing years (period days), last stage",
   },
   真っ二つ: { reading: "まっぷたつ", meaning: "in two equal parts" },
-  的: { reading: "まと", meaning: "mark, target" },
+  的: { reading: "まと", meaning: "mark, target" },//eslint-disable-line
   纏まり: {
     reading: "まとまり",
     meaning: "conclusion, settlement, consistency",

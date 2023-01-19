@@ -153,7 +153,7 @@ export const n4 = {
   雲: { reading: "くも", meaning: "cloud" },
   比べる: { reading: "くらべる", meaning: "to compare" },
   暮れる: { reading: "くれる", meaning: "to get dark, to come to an end" },
-  君: { reading: "くん", meaning: "suffix for familiar young male" },
+  君: { reading: "くん", meaning: "suffix for familiar young male" }, //eslint-disable-line
   毛: { reading: "け", meaning: "hair or fur" },
   計画: { reading: "けいかく・する", meaning: "to plan" },
   経験: { reading: "けいけん・する", meaning: "to experience" },
@@ -481,7 +481,7 @@ export const n4 = {
   優しい: { reading: "やさしい", meaning: "kind" },
   痩せる: { reading: "やせる", meaning: "to become thin" },
   止む: { reading: "やむ", meaning: "to stop" },
-  止める: { reading: "やめる", meaning: "to stop" },
+  止める: { reading: "やめる", meaning: "to stop" },//eslint-disable-line
   柔らかい: { reading: "やわらかい", meaning: "soft" },
   湯: { reading: "ゆ", meaning: "hot water" },
   輸出: { reading: "ゆしゅつ・する", meaning: "to export" },

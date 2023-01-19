@@ -78,7 +78,6 @@ export const n3 = {
   言う: { reading: "ゆう", meaning: "to say" },
   意外: { reading: "いがい", meaning: "unexpected, surprising" },
   行き: { reading: "いき", meaning: "going" },
-  行き: { reading: "ゆき", meaning: "going" },
   息: { reading: "いき", meaning: "breath, tone" },
   勢い: { reading: "いきおい", meaning: "force, vigor, energy, spirit" },
   生き物: { reading: "いきもの", meaning: "living thing, animal" },
@@ -233,7 +232,6 @@ export const n3 = {
   },
   餌: { reading: "えさ", meaning: "feed, bait" },
   得る: { reading: "える", meaning: "to get, to gain, to win" },
-  得る: { reading: "うる", meaning: "to get, to gain, to win" },
   円: { reading: "えん", meaning: "circle, money" },
   延期: { reading: "えんき", meaning: "postponement, adjournment" },
   演技: { reading: "えんぎ", meaning: "acting, performance" },
@@ -352,7 +350,7 @@ export const n3 = {
   罹る: { reading: "かかる", meaning: "to suffer from" },
   鍵: { reading: "かぎ", meaning: "key" },
   限る: { reading: "かぎる", meaning: "to restrict, to limit, to confine" },
-  描く: {
+  描く: { //eslint-disable-line
     reading: "かく",
     meaning: "to draw, to paint, to sketch, to depict, to describe",
   },
@@ -433,20 +431,12 @@ export const n3 = {
     meaning: "to mind, to care about, to be concerned about",
   },
   我慢: { reading: "がまん", meaning: "patience, endurance, perseverance" },
-  上: {
-    reading: "かみ",
-    meaning: "(1) first volume,(2) superior quality,(3) governmental",
-  },
   神: { reading: "かみ", meaning: "god" },
   雷: { reading: "かみなり", meaning: "thunder" },
   髪の毛: { reading: "かみのけ", meaning: "hair (head)" },
   科目: { reading: "かもく", meaning: "(school) subject, curriculum, course" },
   火曜: { reading: "かよう", meaning: "(abbr) Tuesday" },
   空: { reading: "から", meaning: "sky" },
-  柄: {
-    reading: "がら",
-    meaning: "hilt (of a sword), haft (of a dagger), handgrip",
-  },
   刈る: {
     reading: "かる",
     meaning: "to cut (hair), to mow (grass), to harvest",
@@ -589,7 +579,7 @@ export const n3 = {
   },
   記録: { reading: "きろく", meaning: "record, minutes, document" },
   議論: { reading: "ぎろん", meaning: "argument, discussion, dispute" },
-  金: { reading: "きん", meaning: "(1) gold,(2) gold general (shogi) (abbr)" },
+  金: { reading: "きん", meaning: "(1) gold,(2) gold general (shogi) (abbr)" },//eslint-disable-line
   銀: { reading: "ぎん", meaning: "(1) silver, silver coin, silver paint" },
   禁煙: { reading: "きんえん", meaning: "No Smoking!" },
   金額: { reading: "きんがく", meaning: "amount of money" },
@@ -611,7 +601,7 @@ export const n3 = {
     meaning: "monetary circulation, credit situation",
   },
   金曜: { reading: "きんよう", meaning: "(abbr) Friday" },
-  九: { reading: "く", meaning: "nine" },
+  九: { reading: "く", meaning: "nine" },//eslint-disable-line
   句: { reading: "く", meaning: "sentence" },
   食う: { reading: "くう", meaning: "(male) (vulg) to eat" },
   偶然: { reading: "ぐうぜん", meaning: "(by) chance, unexpectedly, suddenly" },
@@ -744,7 +734,6 @@ export const n3 = {
   },
   憲法: { reading: "けんぽう", meaning: "constitution" },
   権利: { reading: "けんり", meaning: "right, privilege" },
-  後: { reading: "ご", meaning: "afterwards, since then, in the future" },
   語: { reading: "ご", meaning: "language, word" },
   恋: { reading: "こい", meaning: "love, tender passion" },
   濃い: {
@@ -1016,7 +1005,6 @@ export const n3 = {
     meaning:
       "(1) to comprise, to account for, to make up (of),(2) to hold, to occupy",
   },
-  下: { reading: "しも", meaning: "under, below, beneath" },
   霜: { reading: "しも", meaning: "frost" },
   借金: { reading: "しゃっきん", meaning: "debt, loan, liabilities" },
   邪魔: { reading: "じゃま", meaning: "hindrance, intrusion" },
@@ -1102,7 +1090,7 @@ export const n3 = {
   },
   章: { reading: "しょう", meaning: "(1) chapter, section,(2) medal" },
   賞: { reading: "しょう", meaning: "prize, award" },
-  上: {
+  上: { //eslint-disable-line
     reading: "じょう",
     meaning: "(1) first volume,(2) superior quality,(3) governmental",
   },
@@ -1257,7 +1245,7 @@ export const n3 = {
   推薦: { reading: "すいせん", meaning: "recommendation" },
   随分: { reading: "ずいぶん", meaning: "extremely" },
   睡眠: { reading: "すいみん", meaning: "sleep" },
-  数: { reading: "すう", meaning: "number, figure" },
+  数: { reading: "すう", meaning: "number, figure" },//eslint-disable-line
   数字: { reading: "すうじ", meaning: "numeral, figure" },
   末: { reading: "すえ", meaning: "the end of, powder" },
   姿: { reading: "すがた", meaning: "figure, shape, appearance" },
@@ -1427,7 +1415,6 @@ export const n3 = {
   存在: { reading: "そんざい", meaning: "existence, being" },
   尊重: { reading: "そんちょう", meaning: "respect, esteem, regard" },
   田: { reading: "た", meaning: "rice field" },
-  他: { reading: "た", meaning: "other (esp. places and things)" },
   対: { reading: "たい", meaning: "pair, couple, set" },
   台: { reading: "だい", meaning: "stand, rack, table, support" },
   題: { reading: "だい", meaning: "title, subject, theme, topic" },
@@ -1507,7 +1494,7 @@ export const n3 = {
   立場: { reading: "たちば", meaning: "standpoint, position, situation" },
   経つ: { reading: "たつ", meaning: "to pass, to lapse" },
   達する: { reading: "たっする", meaning: "to reach, to get to" },
-  唯: {
+  唯: {//eslint-disable-line
     reading: "たった",
     meaning: "free of charge, mere, sole, only, usual, common",
   },
@@ -1523,7 +1510,7 @@ export const n3 = {
   旅: { reading: "たび", meaning: "travel, trip, journey" },
   多分: { reading: "たぶん", meaning: "perhaps, probably" },
   玉: { reading: "たま", meaning: "ball, sphere, coin" },
-  球: { reading: "たま", meaning: "globe, sphere, ball" },
+  球: { reading: "たま", meaning: "globe, sphere, ball" },//eslint-disable-line
   弾: { reading: "たま", meaning: "bullet, shot, shell" },
   偶: { reading: "たま", meaning: "even number, couple, man and wife, friend" },
   偶々: {
@@ -1645,7 +1632,7 @@ export const n3 = {
     meaning:
       "to settle in (place), to take (seat, position), to study (under teacher)",
   },
-  注ぐ: { reading: "つぐ", meaning: "to pour (into), to irrigate, to pay" },
+  注ぐ: { reading: "つぐ", meaning: "to pour (into), to irrigate, to pay" },//eslint-disable-line
   付ける: {
     reading: "つける",
     meaning: "to attach, to join, to add, to append",
@@ -1736,7 +1723,7 @@ export const n3 = {
   電子: { reading: "でんし", meaning: "electron" },
   伝統: { reading: "でんとう", meaning: "tradition, convention" },
   天然: { reading: "てんねん", meaning: "nature, spontaneity" },
-  度: { reading: "ど", meaning: "counter for occurrences" },
+  度: { reading: "ど", meaning: "counter for occurrences" },//eslint-disable-line
   問い: { reading: "とい", meaning: "question, query" },
   党: { reading: "とう", meaning: "party (political)" },
   塔: { reading: "とう", meaning: "tower, pagoda" },
@@ -1760,7 +1747,7 @@ export const n3 = {
   },
   同僚: { reading: "どうりょう", meaning: "coworker, colleague, associate" },
   道路: { reading: "どうろ", meaning: "road, highway" },
-  十: { reading: "とお", meaning: "10, ten" },
+  十: { reading: "とお", meaning: "10, ten" },//eslint-disable-line
   通す: { reading: "とおす", meaning: "to let pass, to overlook, to continue" },
   通り: {
     reading: "とおり",
@@ -1851,17 +1838,16 @@ export const n3 = {
   謎: { reading: "なぞ", meaning: "riddle, puzzle, enigma" },
   納得: { reading: "なっとく", meaning: "consent, assent, understanding" },
   等: { reading: "など", meaning: "et cetera, etc., and the like" },
-  七: { reading: "なな", meaning: "seven" },
+  七: { reading: "なな", meaning: "seven" },//eslint-disable-line
   何: { reading: "なに", meaning: "what" },
-  何: { reading: "なん", meaning: "what" },
   何か: { reading: "なにか", meaning: "something" },
   鍋: { reading: "なべ", meaning: "saucepan, pot" },
-  生: { reading: "なま", meaning: "(1) draft (beer),(2) raw, unprocessed" },
+  生: { reading: "なま", meaning: "(1) draft (beer),(2) raw, unprocessed" }, //eslint-disable-line
   怠ける: { reading: "なまける", meaning: "to be idle, to neglect" },
   波: { reading: "なみ", meaning: "wave" },
   涙: { reading: "なみだ", meaning: "tear" },
   悩む: { reading: "なやむ", meaning: "to be worried, to be troubled" },
-  為る: { reading: "なる", meaning: "to change, to be of use, to reach to" },
+  為る: { reading: "なる", meaning: "to change, to be of use, to reach to" },//eslint-disable-line
   成る: { reading: "なる", meaning: "to become" },
   縄: { reading: "なわ", meaning: "rope, hemp" },
   何で: { reading: "なんで", meaning: "Why?, what for?" },
@@ -1885,7 +1871,6 @@ export const n3 = {
   日曜: { reading: "にちよう", meaning: "Sunday" },
   日光: { reading: "にっこう", meaning: "sunlight" },
   日中: { reading: "にっちゅう", meaning: "daytime, broad daylight" },
-  日本: { reading: "にっぽん", meaning: "Japan" },
   日本: { reading: "にほん", meaning: "Japan" },
   入院: { reading: "にゅういん", meaning: "hospitalization" },
   入学: {
@@ -1918,7 +1903,7 @@ export const n3 = {
   熱帯: { reading: "ねったい", meaning: "tropics" },
   熱中: { reading: "ねっちゅう", meaning: "nuts!, enthusiasm, zeal, mania" },
   年間: { reading: "ねんかん", meaning: "year" },
-  年月: { reading: "ねんげつ", meaning: "months and years" },
+  年月: { reading: "ねんげつ", meaning: "months and years" },//eslint-disable-line
   年中: { reading: "ねんじゅう", meaning: "whole year, always, everyday" },
   年代: { reading: "ねんだい", meaning: "age, era, period, date" },
   年齢: { reading: "ねんれい", meaning: "age, years" },
@@ -1928,7 +1913,7 @@ export const n3 = {
   農業: { reading: "のうぎょう", meaning: "agriculture" },
   農民: { reading: "のうみん", meaning: "farmers, peasants" },
   能力: { reading: "のうりょく", meaning: "ability, faculty" },
-  軒: { reading: "のき", meaning: "eaves" },
+  軒: { reading: "のき", meaning: "eaves" },//eslint-disable-line
   残す: {
     reading: "のこす",
     meaning: "to leave (behind, over), to bequeath, to save, to reserve",
@@ -1947,7 +1932,6 @@ export const n3 = {
     reading: "のぞむ",
     meaning: "to desire, to wish for, to see, to command (a view of)",
   },
-  後: { reading: "のち", meaning: "afterwards, since then, in the future" },
   喉: { reading: "のど", meaning: "throat" },
   伸ばす: {
     reading: "のばす",
@@ -1962,7 +1946,7 @@ export const n3 = {
   嘲: { reading: "のぼる", meaning: "to arise, to ascend, to go up" },
   場: { reading: "ば", meaning: "place, field (physics)" },
   灰: { reading: "はい", meaning: "ash" },
-  梅雨: {
+  梅雨: {//eslint-disable-line
     reading: "ばいう",
     meaning: "rainy season, rain during the rainy season",
   },
@@ -2043,7 +2027,7 @@ export const n3 = {
   膝: { reading: "ひざ", meaning: "knee, lap" },
   非常: { reading: "ひじょう", meaning: "emergency, extraordinary, unusual" },
   美人: { reading: "びじん", meaning: "beautiful person (woman)" },
-  額: { reading: "ひたい", meaning: "forehead, brow" },
+  額: { reading: "ひたい", meaning: "forehead, brow" },//eslint-disable-line
   日付: { reading: "ひづけ", meaning: "date, dating" },
   必死: {
     reading: "ひっし",
@@ -2097,7 +2081,7 @@ export const n3 = {
     meaning:
       "to spread (out), to extend, to stretch, to reach to, to get around",
   },
-  品: {
+  品: {//eslint-disable-line
     reading: "ひん",
     meaning:
       "thing, article, goods, dignity, article (goods), counter for meal courses",
@@ -2105,8 +2089,6 @@ export const n3 = {
   瓶: { reading: "びん", meaning: "bottle" },
   便: { reading: "びん", meaning: "way, means" },
   不: { reading: "ふ", meaning: "un, non, negative prefix" },
-  不: { reading: "ぶ", meaning: "un, non, negative prefix" },
-  無: { reading: "ぶ", meaning: "nothing, naught, nil, zero" },
   分: { reading: "ぶ", meaning: "dividing, part" },
   不安: {
     reading: "ふあん",
@@ -2191,7 +2173,7 @@ export const n3 = {
       "to touch, to be touched, to touch on a subject, to feel, to violate (law, copyright, etc.), to perceive, t",
   },
   風呂: { reading: "ふろ", meaning: "bath" },
-  分: { reading: "ぶん", meaning: "dividing, part, segment" },
+  分: { reading: "ぶん", meaning: "dividing, part, segment" },//eslint-disable-line
   文: { reading: "ぶん", meaning: "sentence" },
   雰囲気: {
     reading: "ふんいき",
@@ -2235,7 +2217,7 @@ export const n3 = {
     reading: "ほうほう",
     meaning: "method, manner, way, means, technique",
   },
-  方々: {
+  方々: { //eslint-disable-line
     reading: "ほうぼう",
     meaning: "persons, this and that, here and there, everywhere",
   },
@@ -2264,12 +2246,10 @@ export const n3 = {
   },
   骨: { reading: "ほね", meaning: "bone" },
   炎: { reading: "ほのお", meaning: "flame" },
-  頬: { reading: "ほほ", meaning: "cheek (of face)" },
   頬: { reading: "ほお", meaning: "cheek (of face)" },
   微笑む: { reading: "ほほえむ", meaning: "to smile" },
   褒める: { reading: "ほめる", meaning: "to praise, to admire, to speak well" },
   濠: { reading: "ほり", meaning: "moat" },
-  本当: { reading: "ほんと", meaning: "truth, reality" },
   本当: { reading: "ほんとう", meaning: "truth, reality" },
   本人: { reading: "ほんにん", meaning: "the person himself" },
   本物: { reading: "ほんもの", meaning: "genuine article" },
@@ -2320,7 +2300,6 @@ export const n3 = {
     reading: "まる",
     meaning: "circle, full (month), perfection, purity, suffix for ship names",
   },
-  円: { reading: "まる", meaning: "circle, money" },
   丸い: { reading: "まるい", meaning: "round, circular, spherical" },
   回す: { reading: "まわす", meaning: "to turn, to revolve" },
   回り: {
@@ -2425,7 +2404,6 @@ export const n3 = {
   目標: { reading: "もくひょう", meaning: "mark, objective, target" },
   木曜: { reading: "もくよう", meaning: "Thursday" },
   文字: { reading: "もじ", meaning: "letter (of alphabet), character" },
-  文字: { reading: "もんじ", meaning: "letter (of alphabet), character" },
   持ち上げる: {
     reading: "もちあげる",
     meaning: "to raise, to lift up, to flatter",
@@ -2555,7 +2533,6 @@ export const n3 = {
     reading: "よろしい",
     meaning: "(hon) good, oK, all right, fine, very well, will do, may, can",
   },
-  四: { reading: "よん", meaning: "four" },
   来: { reading: "らい", meaning: ", for (10 days), next (year)" },
   楽: { reading: "らく", meaning: "comfort, ease" },
   利益: {
@@ -2612,7 +2589,7 @@ export const n3 = {
     reading: "わずか",
     meaning: "only, merely, a little, small quantity",
   },
-  綿: { reading: "わた", meaning: "cotton, padding" },
+  綿: { reading: "わた", meaning: "cotton, padding" },//eslint-disable-line
   話題: { reading: "わだい", meaning: "topic, subject" },
   笑い: { reading: "わらい", meaning: "laugh, laughter, smile" },
   割る: { reading: "わる", meaning: "to divide, to cut, to break, to halve" },
