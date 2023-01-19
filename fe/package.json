@@ -1,5 +1,6 @@
 {
   "name": "fe",
+  "homepage": "https://seanhli.github.io/kanji-memo/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
