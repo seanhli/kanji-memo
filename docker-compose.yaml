@@ -1,10 +1,10 @@
 services:
-  fe:
+  kanji-memo:
     image: node:lts-bullseye
     command: /bin/bash run.sh
     working_dir: /app
     volumes:
-      - ./fe:/app
+      - .:/app
     ports:
       - "3000:3000"
     environment:
