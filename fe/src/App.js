@@ -6,7 +6,8 @@ import MainDisplay from "./mainDisplay";
 import LandingPage from "./landing";
 import Recognition from "./modes/recognition";
 // import Challenge from './modes/challenge';
-import Vocab from "./modes/vocab";
+import VocabENJP from "./modes/vocabENJP";
+import VocabJPEN from "./modes/vocabJPEN";
 import Comprehension from "./modes/comprehension";
 import { useGetGradeNKanjiQuery, useGetJoyoKanjiQuery } from "./store/kanjiAPI";
 import { useDispatch } from "react-redux";
@@ -80,7 +81,8 @@ function App() {
                 path="meaning"
                 element={loaded ? <Comprehension /> : <></>}
               />
-              <Route path="vocab" element={loaded ? <Vocab /> : <></>} />
+              <Route path="vocab-en-jp" element={loaded ? <VocabENJP /> : <></>} />
+              <Route path="vocab-jp-en" element={loaded ? <VocabJPEN /> : <></>} />
             </Route>
           </Route>
         </Routes>

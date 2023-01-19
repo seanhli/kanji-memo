@@ -50,12 +50,20 @@ function SideMenu() {
               meaning
             </NavLink>
             <NavLink
-              to={"/home/vocab/"}
+              to={"/home/vocab-en-jp/"}
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
               }
             >
-              vocab
+              vocab <span className="smaller-text">(EN &#10142; JP)</span>
+            </NavLink>
+            <NavLink
+              to={"/home/vocab-jp-en/"}
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
+              vocab <span className="smaller-text">(JP &#10142; EN)</span>
             </NavLink>
           </>
         )}

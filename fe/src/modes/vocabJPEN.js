@@ -1,35 +1,50 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { nextVocab } from "../store/kanji/vocabLists";
+import { nextJPENVocab } from "../store/kanji/vocabLists";
 import { updateScore } from "../store/tracker/tracking";
 
-function Vocab() {
+function VocabJPEN() {
   const dispatch = useDispatch();
   const level = useSelector((state) => state.menuSlice.level);
   const difficulty =
     level === 1 ? "beginner" : level === 2 ? "intermediate" : "advanced";
-  const vocab = useSelector((state) => state.vocabSlice.next1[difficulty]);
+  const vocab = useSelector((state) => state.vocabSlice.next1JPEN[difficulty]);
   const score = useSelector((state) => state.trackingSlice[difficulty]);
   const answerPool = useSelector(
-    (state) => state.vocabSlice.answerPool[difficulty]
+    (state) => state.vocabSlice.answerPoolJPEN[difficulty]
   );
   const [attempted, setAttempted] = useState(false);
   const [questionNum, setQuestionNum] = useState(1);
   const [wrongIdx, setWrongIdx] = useState(99);
   const [correctIdx, setCorrectIdx] = useState(99);
+  const snarkyResponses = {
+    success: [
+      "feelsgoodman",
+      "why you a genius!",
+      "not bad - asian parent",
+      "naisu!",
+      "omega goodo jobu",
+    ],
+    fail: [
+      "pain... desu",
+      "feelsbadman",
+      "doctor, it hurts in my kokoro",
+      "am i just... bad?",
+    ],
+  };
 
   useEffect(() => {
-    dispatch(nextVocab(difficulty));
+    dispatch(nextJPENVocab(difficulty));
   }, [difficulty, questionNum]); // eslint-disable-line
 
   function checkAnswer(e, input, idx) {
-    if (input === vocab[0]) {
+    if (input === vocab[1]["meaning"]) {
       dispatch(updateScore([difficulty, 1]));
       setCorrectIdx(idx);
     } else {
       dispatch(updateScore([difficulty, 0]));
       setWrongIdx(idx);
-      const correctIndex = answerPool.indexOf(vocab[0]);
+      const correctIndex = answerPool.indexOf(vocab[1]["meaning"]);
       setCorrectIdx(correctIndex);
     }
     setAttempted(true);
@@ -44,23 +59,44 @@ function Vocab() {
 
   return (
     <div className="sub-display">
-      <div className="vocab-word">{vocab[1]["meaning"]}</div>
+      <div className="vocab-word">{vocab[0]}</div>
+      {attempted && (
+        <div className="vocab-reading">
+          {vocab[0]}: {vocab[1]["reading"]}
+        </div>
+      )}
       <div className="vocab-bot">
         <div className="vocab-instructions">
-          choose the vocab from the choices below that best matches the english
-          definition above
+          {!attempted
+            ? "choose the definition from the choices below that best matches the vocab above"
+            : wrongIdx === 99
+            ? snarkyResponses["success"][
+                Math.floor(Math.random() * snarkyResponses["success"].length)
+              ]
+            : snarkyResponses["fail"][
+                Math.floor(Math.random() * snarkyResponses["fail"].length)
+              ]}
         </div>
         <div className="vocab-answer-pool">
           {answerPool.map((choice, idx) => {
             return (
               <div
-                className={
-                  idx === correctIdx
-                    ? "vocab-correct-choice"
-                    : idx === wrongIdx
-                    ? "vocab-wrong-choice"
-                    : "vocab-answer-choice"
-                }
+                className={`
+                    ${
+                      idx === correctIdx
+                        ? "vocab-correct-choice"
+                        : idx === wrongIdx
+                        ? "vocab-wrong-choice"
+                        : "vocab-answer-choice"
+                    }
+                    ${
+                      choice.length > 50
+                        ? "long-choice"
+                        : choice.length > 25
+                        ? "medium-choice"
+                        : ""
+                    }
+                    `}
                 key={`choice-${idx}`}
                 onClick={
                   attempted
@@ -95,4 +131,4 @@ function Vocab() {
   );
 }
 
-export default Vocab;
+export default VocabJPEN;

@@ -20,12 +20,22 @@ const initialState = {
     advanced: [],
   },
   // array: ("kanji", {reading: "", meaning: ""})
-  next1: {
+  next1ENJP: {
     beginner: null,
     intermediate: null,
     advanced: null,
   },
-  answerPool: {
+  answerPoolENJP: {
+    beginner: null,
+    intermediate: null,
+    advanced: null,
+  },
+  next1JPEN: {
+    beginner: null,
+    intermediate: null,
+    advanced: null,
+  },
+  answerPoolJPEN: {
     beginner: null,
     intermediate: null,
     advanced: null,
@@ -61,15 +71,31 @@ export const vocabSlice = createSlice({
       const levels = ["beginner", "intermediate", "advanced"];
       levels.forEach((level) => {
         const nextVocab = state.Qs[level].shift();
-        state.next1[level] = [nextVocab, state.vocabLists[level][nextVocab]];
-        state.answerPool[level] = state.Qs[level]
+
+        //EN to JP
+        state.next1ENJP[level] = [
+          nextVocab,
+          state.vocabLists[level][nextVocab],
+        ];
+        state.answerPoolENJP[level] = state.Qs[level]
           .splice(0, 8)
           .concat([nextVocab])
+          .sort((a, b) => 0.5 - Math.random());
+
+        //JP to EN
+        state.next1JPEN[level] = [
+          nextVocab,
+          state.vocabLists[level][nextVocab],
+        ];
+        state.answerPoolJPEN[level] = state.Qs[level]
+          .splice(0, 8)
+          .concat([nextVocab])
+          .map((jpvocab) => state.vocabLists[level][jpvocab]["meaning"])
           .sort((a, b) => 0.5 - Math.random());
       });
     },
 
-    nextVocab: (state, action) => {
+    nextENJPVocab: (state, action) => {
       // action payload should come in as the difficulty level
       if (action && action.payload in state.Qs)
         if (state.Qs[action.payload].length < 40) {
@@ -80,20 +106,43 @@ export const vocabSlice = createSlice({
         }
       // update next1 and answer pool states for corresponding level
       const nextItem = state.Qs[action.payload].shift();
-      state.next1[action.payload] = [
+      state.next1ENJP[action.payload] = [
         nextItem,
         state.vocabLists[action.payload][nextItem],
       ];
-      state.answerPool[action.payload] = state.Qs[action.payload]
+      state.answerPoolENJP[action.payload] = state.Qs[action.payload]
         .splice(0, 8)
         .concat([nextItem])
+        .sort((a, b) => 0.5 - Math.random());
+    },
+
+    nextJPENVocab: (state, action) => {
+      // action payload should come in as the difficulty level
+      if (action && action.payload in state.Qs)
+        if (state.Qs[action.payload].length < 40) {
+          // replenish and shuffle queue if less than 40 words remaining in corresponding queue
+          state.Qs[action.payload] = Object.keys(
+            state.vocabLists[action.payload]
+          ).sort((a, b) => 0.5 - Math.random());
+        }
+      // update next1 and answer pool states for corresponding level
+      const nextItem = state.Qs[action.payload].shift();
+      state.next1JPEN[action.payload] = [
+        nextItem,
+        state.vocabLists[action.payload][nextItem],
+      ];
+      state.answerPoolJPEN[action.payload] = state.Qs[action.payload]
+        .splice(0, 8)
+        .concat([nextItem])
+        .map((jpvocab) => state.vocabLists[action.payload][jpvocab]["meaning"])
         .sort((a, b) => 0.5 - Math.random());
     },
   },
 });
 
 // Export our actions for use in our components
-export const { createVocabLists, nextVocab } = vocabSlice.actions;
+export const { createVocabLists, nextENJPVocab, nextJPENVocab } =
+  vocabSlice.actions;
 
 // Export the reducer to use in the declaration of our store in store.js
 export default vocabSlice.reducer;

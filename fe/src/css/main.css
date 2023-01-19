@@ -50,12 +50,6 @@ img {
   color: white;
   width: auto;
   filter: brightness(0.9);
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
 }
 
 .menu-title {
@@ -128,6 +122,10 @@ img {
   color: inherit;
   text-decoration: inherit;
   animation: fadeIn 1s ease;
+}
+
+.smaller-text {
+  font-size: max(1.75vh, 12px);
 }
 
 .menu .nav-link:last-child {

@@ -233,6 +233,19 @@
     color: white;
 }
 
+.vocab-reading {
+    font-size: max(2vh, 14px);
+    word-wrap: break-word;
+    text-align: center;
+    color: white;
+    -webkit-touch-callout: initial; /* iOS Safari */
+    -webkit-user-select: text; /* Safari */
+    -khtml-user-select: text; /* Konqueror HTML */
+    -moz-user-select: text; /* Old versions of Firefox */
+    -ms-user-select: text; /* Internet Explorer/Edge */
+    user-select: text;
+}
+
 .vocab-instructions {
     margin-top: max(1.5vh, 15px);
     margin-bottom: max(2.5vh, 17.5px);
@@ -262,6 +275,15 @@
     color: var(--bg-dark);
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 1.5vh;
+    word-wrap: break-word;
+}
+
+.medium-choice {
+    font-size: max(2.5vh, 18px)
+}
+
+.long-choice {
+    font-size: max(2vh, 14px);
 }
 
 .vocab-answer-choice:hover {
