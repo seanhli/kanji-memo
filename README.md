@@ -1,7 +1,7 @@
 # kanji-memo (or kanji life)
 
 Visit the deployed site at:
-https://seanhli.github.io/kanji-memo/#/home/vocab-jp-en/
+https://seanhli.github.io/kanji-memo/
 
 ## project mission
 - a fun and interactive way to learn and review kanji and Japanese vocabulary
