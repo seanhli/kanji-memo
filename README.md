@@ -3,6 +3,9 @@
 Visit the deployed site at:
 https://seanhli.github.io/kanji-memo/
 
+## APIs used in this project
+- https://kanjiapi.dev/
+
 ## project mission
 - a fun and interactive way to learn and review kanji and Japanese vocabulary
 
